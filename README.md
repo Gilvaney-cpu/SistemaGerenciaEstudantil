@@ -7,6 +7,5 @@
 
 
 ## Descrição Geral do Projeto
-A aplicação funcionará 
+O "Sistema Gerência Estudantil" é uma aplicação desenvolvido em Java, com uma interface de usuário construída em JavaFX para a Disciplina de Introdução a Programação 2. Este sistema foi projetado para simular as demandas de um sistema escolar, oferecendo um conjunto de funcionalidades comuns no ambiente escolar para diferentes atores dentro da instituição educacional.
 
-## Requisitos
