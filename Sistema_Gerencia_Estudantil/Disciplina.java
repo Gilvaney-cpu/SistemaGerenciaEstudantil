@@ -18,15 +18,24 @@ public class Disciplina {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+
+        if (nome != null && (!nome.isBlank()) ) {
+            this.nome = nome;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
+
 
     public Professor getProfessor() {
         return professor;
     }
 
     public void setProfessor(Professor professor) {
-        this.professor = professor;
+
+        if (professor != null) {
+            this.professor = professor;
+        }
     }
 
     public DateTime getHorario() {
@@ -34,7 +43,13 @@ public class Disciplina {
     }
 
     public void setHorario(DateTime horario) {
-        this.horario = horario;
+
+        if (horario != null &&
+                (horario.getHour() > 0 && horario.getHour() <= 24)) {
+            this.horario = horario;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public Arraylist<Aluno> getAlunos() {
