@@ -6,9 +6,9 @@ public class Disciplina {
     private Arraylist<Aluno> alunos;
 
     public Disciplina (String nome, Professor professor, DateTime horario, Aluno aluno) {
-        this.nome = nome;
-        this.professor = professor;
-        this.horario = horario;
+        setNome(nome);
+        setProfessor(professor);
+        setHorario(horario);
         this.alunos = new ArrayList<>(aluno);
 
     }

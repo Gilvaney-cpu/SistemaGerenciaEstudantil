@@ -9,6 +9,7 @@ public class Professor extends Usuario {
         
         super(nome, cpf, senha, id); // herança da classe Usuario.
         this.turma = new ArrayList<>();
+        this.disciplina = new ArrayList<>();
         this.ativo = true;
     }
 
