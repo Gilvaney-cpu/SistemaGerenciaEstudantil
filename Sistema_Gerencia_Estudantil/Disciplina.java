@@ -1,15 +1,19 @@
+
+import java.time.LocalTime;
+import java.util.ArrayList;
+
 public class Disciplina {
 
     private String nome;
     private Professor professor;
-    private DateTime horario;
+    private LocalTime horario;
     private Arraylist<Aluno> alunos;
 
-    public Disciplina (String nome, Professor professor, DateTime horario, Aluno aluno) {
+    public Disciplina (String nome, Professor professor, LocalTime horario, Aluno aluno) {
         setNome(nome);
         setProfessor(professor);
         setHorario(horario);
-        this.alunos = new ArrayList<>(aluno);
+        this.alunos = new ArrayList<>();
 
     }
 
@@ -38,11 +42,11 @@ public class Disciplina {
         }
     }
 
-    public DateTime getHorario() {
+    public LocalTime getHorario() {
         return horario;
     }
 
-    public void setHorario(DateTime horario) {
+    public void setHorario(LocalTime horario) {
 
         if (horario != null &&
                 (horario.getHour() > 0 && horario.getHour() <= 24)) {
