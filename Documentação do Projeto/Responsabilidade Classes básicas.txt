@@ -1,0 +1,19 @@
+
+Responsável pelas classes básicas:
+
+ - Davi Malaquias:
+Classe Usuario;
+Classe Diretor;
+Classe Turma;
+
+ - Ramon Vilela:
+Classe Professor;
+Classe Disciplina;
+Classe Presença 
+Classe notasDisciplina;
+
+ - Gilvaney Daniel:
+Classe Aluno;
+Classe Matrícula;
+Classe Enum situacaoAluno;
+Classe Presenca;
