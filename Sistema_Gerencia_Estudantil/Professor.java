@@ -1,3 +1,7 @@
+package Sistema_Gerencia_Estudantil;
+
+import java.util.ArrayList;
+
 public class Professor extends Usuario {
 
     private ArrayList<Turma> turma;
@@ -5,10 +9,10 @@ public class Professor extends Usuario {
     private ArrayList<Disciplina> disciplina;
 
     /* Método construtor */
-    public Professor (String nome, String cpf, String senha, String id, Turma turma) {
+    public Professor (String nome, String cpf, String senha, String id) {
         
         super(nome, cpf, senha, id); // herança da classe Usuario.
-        this.turma = new ArrayList<>();
+        turma = new ArrayList<Turma>();
         this.disciplina = new ArrayList<>();
         this.ativo = true;
     }
@@ -37,7 +41,7 @@ public class Professor extends Usuario {
         this.disciplina = disciplina;
     }
 
-    public void lancarNota(Turma turma, Aluno aluno) {
+    public void atribuirNota(Turma turma, Aluno aluno, double nota) {
 
     }
 

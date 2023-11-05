@@ -1,3 +1,5 @@
+package Sistema_Gerencia_Estudantil;
+
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -5,15 +7,18 @@ import java.util.ArrayList;
 public class Disciplina {
 
     private String nome;
-    private Professor professor;
-    private LocalTime horario;
-    private Arraylist<Aluno> alunos;
+    private Professor professor; // - idProfessor: String
+    private LocalTime horario; // - horario: String
+    private Arraylist<Aluno> alunos; // - idAluno: String
+    private ArrayList<Integer> notasDisciplina; // - nota: notasDisciplina
+    private ArrayList<Presenca> presencas;
 
-    public Disciplina (String nome, Professor professor, LocalTime horario, Aluno aluno) {
+    public Disciplina (String nome, Professor professor, LocalTime horario) {
         setNome(nome);
         setProfessor(professor);
         setHorario(horario);
-        this.alunos = new ArrayList<>();
+        alunos = new ArrayList<Aluno>();
+        presencas = new ArrayList<Presenca>();
 
     }
 
@@ -63,4 +68,13 @@ public class Disciplina {
     public void setAlunos(Arraylist<Aluno> alunos) {
         this.alunos = alunos;
     }
+
+    public ArrayList<Integer> getNotasDisciplina() {
+        return notasDisciplina;
+    }
+
+    public void setNotasDisciplina(ArrayList<Integer> notasDisciplina) {
+        this.notasDisciplina = notasDisciplina;
+    }
+
 }
