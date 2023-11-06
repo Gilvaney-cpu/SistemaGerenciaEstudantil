@@ -1,16 +1,16 @@
-public class Turma {
+public class Turma { //Atributos
     private int ID;
     private String nome;
     private String IDaluno;
     private String turno;
 
-    public Turma(int ID, String nome, String IDaluno, String turno) {
+    public Turma(int ID, String nome, String IDaluno, String turno) //Instanciamento dos atributos {
         this.ID = ID;
         this.nome = nome;
         this.IDaluno = IDaluno;
         this.turno = turno;
     }
-
+//gets e sets
     public int getID() {
         return ID;
     }
@@ -30,7 +30,7 @@ public class Turma {
     public String getIDaluno() {
         return IDaluno;
     }
-
+//funções primárias de get e set
     public void setIDaluno(String IDaluno) {
         this.IDaluno = IDaluno;
     }
