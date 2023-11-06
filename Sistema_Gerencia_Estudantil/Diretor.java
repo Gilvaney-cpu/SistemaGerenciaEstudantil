@@ -1,10 +1,18 @@
-import java.util.Date;
-
-public class Diretor extends Usuario {
-    private int ID;
+ublic class Diretor extends Usuario {
+    private int id;
     private String cargo;
 
-    public Diretor(String nome, String email, String senha, String cpf) {
-        super(nome, email, senha, cpf); // ta chamando os construct da superclasse usuário, cujo diretor é uma extensão e contém herança
+    public Diretor(int id, String cargo, String nome, String email, String senha) {
+        super(nome, email, senha, "");
+        this.id = id;
+        this.cargo = cargo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCargo() {
+        return cargo;
     }
 }
