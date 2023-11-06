@@ -1,10 +1,10 @@
-public class Usuario {
+public class Usuario { //Atributos
     private String nome;
     private String CPF;
     private String senha;
     private String ID;
 
-    public Usuario(String nome, String CPF, String senha, String ID) {
+    public Usuario(String nome, String CPF, String senha, String ID) //Instanciamento de atributos da classe {
         this.nome = nome;
         this.CPF = CPF;
         this.senha = senha;
