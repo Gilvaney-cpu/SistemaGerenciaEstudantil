@@ -1,7 +1,6 @@
 # Sistema de Gestão Escolar Fundamental
 
 ## Integrantes do Grupo
-* Davi Malaquias dos Santos - davi.malaquias@gmail.com
 * Gilvaney Daniel Fernandes Leandro - gilvaney.leandro@ufrpe.br
 * Lucas Rayan Guerra - lucas.guerra@ufrpe.br
 * Ramon Artur Vilela de Oliveira - ramonvilela92@hotmail.com
