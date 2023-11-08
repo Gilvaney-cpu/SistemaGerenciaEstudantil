@@ -4,7 +4,7 @@ public class Turma { //Atributos
     private String IDaluno;
     private String turno;
 
-    public Turma(int ID, String nome, String IDaluno, String turno) //Instanciamento dos atributos {
+    public Turma(int ID, String nome, String IDaluno, String turno){ //Instanciamento dos atributos {
         this.ID = ID;
         this.nome = nome;
         this.IDaluno = IDaluno;
