@@ -1,4 +1,4 @@
-ublic class Diretor extends Usuario { //Atributos
+public class Diretor extends Usuario { //Atributos
     private int id;
     private String cargo;
 //instanciamento de atributos:
