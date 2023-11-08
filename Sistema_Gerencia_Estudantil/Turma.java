@@ -1,3 +1,5 @@
+package Sistema_Gerencia_Estudantil;
+
 public class Turma { //Atributos
     private int ID;
     private String nome;

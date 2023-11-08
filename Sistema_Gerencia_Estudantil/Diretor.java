@@ -1,3 +1,5 @@
+package Sistema_Gerencia_Estudantil;
+
 public class Diretor extends Usuario { //Atributos
     private int id;
     private String cargo;

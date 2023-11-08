@@ -1,3 +1,5 @@
+package Sistema_Gerencia_Estudantil;
+
 public class Usuario { //Atributos
     private String nome;
     private String CPF;

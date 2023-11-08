@@ -1,3 +1,5 @@
+package Sistema_Gerencia_Estudantil;
+
 public class Matricula {
 
     // Atributos
