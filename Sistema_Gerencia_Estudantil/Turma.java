@@ -12,6 +12,16 @@ public class Turma { //Atributos
         this.IDaluno = IDaluno;
         this.turno = turno;
     }
+
+     // Método para adicionar um aluno à turma
+    public void adicionarAluno(String IDaluno) {
+        alunos.add(IDaluno);
+    }
+    //exemplo:
+    Turma turma = new Turma(1, "Turma A", "Manhã");
+turma.adicionarAluno("12345");
+turma.adicionarAluno("67890");
+
 //gets e sets
     public int getID() {
         return ID;
