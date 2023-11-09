@@ -9,6 +9,17 @@ public class Diretor extends Usuario { //Atributos
         this.id = id;
         this.cargo = cargo;
     }
+     // Método para imprimir informações do diretor
+    public void imprimirInformacoes() {
+        System.out.println("ID: " + id);
+        System.out.println("Nome: " + getNome());
+        System.out.println("Cargo: " + cargo);
+    }
+
+    //exemplo:
+    Diretor diretor = new Diretor(1, "João", "Diretor");
+diretor.imprimirInformacoes();
+    
 //get e set
     public int getId() {
         return id;
