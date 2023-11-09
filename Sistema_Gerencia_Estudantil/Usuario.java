@@ -12,6 +12,13 @@ public class Usuario { //Atributos
         this.senha = senha;
         this.ID = ID;
     }
+    // Método para apresentar o usuário
+    public void apresentarUsuario() {
+        System.out.println("Olá, eu sou o usuário " + getNome() + ".");
+    }
+//exemplo:
+  //  Usuario usuario = new Usuario("João", "123456789", "senha123", "U1");
+usuario.apresentarUsuario();
 
     // getters e setters
     public String getNome() {
