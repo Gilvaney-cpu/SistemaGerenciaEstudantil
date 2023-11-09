@@ -17,8 +17,8 @@ public class Diretor extends Usuario { //Atributos
     }
 
     //exemplo:
-    Diretor diretor = new Diretor(1, "João", "Diretor");
-diretor.imprimirInformacoes();
+   // Diretor diretor = new Diretor(1, "João", "Diretor");
+//diretor.imprimirInformacoes();
     
 //get e set
     public int getId() {
