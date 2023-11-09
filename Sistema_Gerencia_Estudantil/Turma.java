@@ -18,9 +18,9 @@ public class Turma { //Atributos
         alunos.add(IDaluno);
     }
     //exemplo:
-    Turma turma = new Turma(1, "Turma A", "Manhã");
-turma.adicionarAluno("12345");
-turma.adicionarAluno("67890");
+   // Turma turma = new Turma(1, "Turma A", "Manhã");
+//turma.adicionarAluno("12345");
+//turma.adicionarAluno("67890");
 
 //gets e sets
     public int getID() {
