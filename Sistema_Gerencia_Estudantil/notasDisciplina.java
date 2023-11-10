@@ -41,4 +41,8 @@ public class notasDisciplina {
     public void setNotas(ArrayList<Integer> notas) {
         this.notas = notas;
     }
+
+    public double getValor() {
+        return 0;
+    }
 }

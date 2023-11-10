@@ -22,6 +22,25 @@ public class Aluno {
         this.matriculaAluno = matriculaAluno;
         this.presencas = new ArrayList<>();
     }
+    //Metódos 
+    public ArrayList<notasDisciplina> getNotas(Disciplina disciplina) {  // retorna uma lista com as notas do aluno em uma determinada disciplina.
+        ArrayList<notasDisciplina> notas = new ArrayList<>();
+        for (notasDisciplina nota : boletim) {
+            if (nota.getDisciplina().equals(disciplina)) {
+              notas.add(nota);
+            }
+        }
+        return notas;
+    }
+
+    public double getMedia(Disciplina disciplina) {                      //calcula a média das notas do aluno em uma determinada disciplina.
+        ArrayList<notasDisciplina> notas = getNotas(disciplina);
+        double soma = 0;
+        for (notasDisciplina nota : notas) {
+            soma += nota.getValor();
+        }
+        return soma / notas.size();
+    }  
 
     // Getters e setters para os atributos
     public LocalDate getDataNascimento() {
