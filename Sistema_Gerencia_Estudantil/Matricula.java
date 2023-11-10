@@ -16,6 +16,36 @@ public class Matricula {
         this.semestre = semestre;
     }
 
+    //Metódos
+    public String obterInformacoesMatricula() {  // mostrar os dados da matricula
+        return "Matrícula: " + idMatricula +
+               "\nDisciplina: " + idDisciplina +
+               "\nAno Letivo: " + anoLetivo +
+               "\nSemestre: " + semestre;
+    }
+    
+    public boolean validarMatricula() {
+        // Lógica de validação da matrícula
+        // Exemplo: Verificar se o ano letivo e semestre são válidos
+        return (anoLetivo > 0 && semestre >= 1 && semestre <= 2);
+    }
+
+    public void atualizarMatricula(String novoIdDisciplina, int novoAnoLetivo, int novoSemestre) {  // Método para Atualizar Informações da Matrícula
+        this.idDisciplina = novoIdDisciplina;
+        this.anoLetivo = novoAnoLetivo;
+        this.semestre = novoSemestre;
+    }
+
+    @Override                           // retorna uma representação de string da matrícula, útil para leitura e depuração,
+    public String toString() {          // a string inclui os valores dos atributos idMatricula, idDisciplina, anoLetivo e semestre.
+        return "Matricula{" +
+               "idMatricula='" + idMatricula + '\'' +
+               ", idDisciplina='" + idDisciplina + '\'' +
+               ", anoLetivo=" + anoLetivo +
+               ", semestre=" + semestre +
+               '}';
+}
+
     // Getters e setters para os atributos
     public String getIdMatricula() {
         return idMatricula;
