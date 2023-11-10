@@ -9,7 +9,7 @@ public class Disciplina {
     private String nome;
     private Professor professor; // - idProfessor: String
     private LocalTime horario; // - horario: String
-    private Arraylist<Aluno> alunos; // - idAluno: String
+    private ArrayList<Aluno> alunos; // - idAluno: String
     private ArrayList<Integer> notasDisciplina; // - nota: notasDisciplina
     private ArrayList<Presenca> presencas;
 
@@ -61,11 +61,11 @@ public class Disciplina {
         }
     }
 
-    public Arraylist<Aluno> getAlunos() {
+    public ArrayList<Aluno> getAlunos() {
         return alunos;
     }
 
-    public void setAlunos(Arraylist<Aluno> alunos) {
+    public void setAlunos(ArrayList<Aluno> alunos) {
         this.alunos = alunos;
     }
 
