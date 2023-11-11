@@ -1,16 +1,20 @@
 package Sistema_Gerencia_Estudantil;
 
+import java.util.ArrayList;
+
 public class Turma { //Atributos
     private int ID;
     private String nome;
     private String IDaluno;
     private String turno;
+    private ArrayList<Disciplina> disciplinas;
 
     public Turma(int ID, String nome, String IDaluno, String turno){ //Instanciamento dos atributos {
         this.ID = ID;
         this.nome = nome;
         this.IDaluno = IDaluno;
         this.turno = turno;
+        disciplinas = new ArrayList<>();
     }
 
      // Método para adicionar um aluno à turma
@@ -54,4 +58,13 @@ public class Turma { //Atributos
     public void setTurno(String turno) {
         this.turno = turno;
     }
+
+    public ArrayList<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
 }
+

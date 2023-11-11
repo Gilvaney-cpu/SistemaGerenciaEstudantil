@@ -16,4 +16,4 @@ Classe notasDisciplina;
 Classe Aluno;
 Classe Matrícula;
 Classe Enum situacaoAluno;
-Classe Sistema_Gerencia_Estudantil.Presenca;
+Classe Presenca;

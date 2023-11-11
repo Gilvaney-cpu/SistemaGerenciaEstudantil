@@ -6,12 +6,14 @@ import java.util.ArrayList;
 public class notasDisciplina {
     private Turma id; // serve como o nome da disciplina
     private Disciplina disciplina;
-    private ArrayList<Integer> notas;
+    private ArrayList<Double> notas;
+    private ArrayList<Aluno> alunos;
 
     public notasDisciplina (Turma id, Disciplina disciplina) {
      setId(id);
      setDisciplina(disciplina);
-     notas = new ArrayList<Integer>();
+     notas = new ArrayList<Double>();
+     alunos = new ArrayList<>();
     }
 
     public Turma getId() {
@@ -34,12 +36,20 @@ public class notasDisciplina {
         }
     }
 
-    public ArrayList<Integer> getNotas() {
+    public ArrayList<Double> getNotas() {
         return notas;
     }
 
-    public void setNotas(ArrayList<Integer> notas) {
+    public void setNotas(ArrayList<Double> notas) {
         this.notas = notas;
+    }
+
+    public ArrayList<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(ArrayList<Aluno> alunos) {
+        this.alunos = alunos;
     }
 
     public double getValor() {
