@@ -86,7 +86,8 @@ public class Professor extends Usuario {
 
     public String toString(){
         /* Devolve o nome e o id(super) do professor.*/
-        return String.format("Nome: %10s \nId: %10s \n",this.getNome()
-        ,super.getID());
+        return String.format("Nome: %10s | \nId: %10s | \nCargo: %10s | \n",this.getNome()
+                ,super.getID()
+                , this.getClass().getSimpleName().toUpperCase());
     }
 }
