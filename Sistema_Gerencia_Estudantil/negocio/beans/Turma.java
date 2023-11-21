@@ -1,4 +1,4 @@
-package Sistema_Gerencia_Estudantil;
+package Sistema_Gerencia_Estudantil.negocio.beans;
 
 import java.util.ArrayList;
 
