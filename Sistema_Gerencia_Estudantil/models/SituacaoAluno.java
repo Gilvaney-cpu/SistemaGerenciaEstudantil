@@ -1,6 +1,6 @@
-package Sistema_Gerencia_Estudantil.negocio.beans;
+package Sistema_Gerencia_Estudantil.models;
 
-public enum situacaoAluno {
+public enum SituacaoAluno {
     APROVADO,
     REPROVADO,
     RECUPERACAO,

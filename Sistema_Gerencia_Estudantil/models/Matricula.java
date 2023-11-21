@@ -1,4 +1,4 @@
-package Sistema_Gerencia_Estudantil.negocio.beans;
+package Sistema_Gerencia_Estudantil.models;
 
 public class Matricula {
 

@@ -1,4 +1,4 @@
-package Sistema_Gerencia_Estudantil.negocio.beans;
+package Sistema_Gerencia_Estudantil.models;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public class Aluno {
     private LocalDate dataNascimento;
     private String turma;
     private ArrayList<NotasDisciplina> boletim;
-    private situacaoAluno status;
+    private SituacaoAluno status;
     private Matricula matriculaAluno;
     private ArrayList<Presenca> presencas;
 
@@ -18,7 +18,7 @@ public class Aluno {
         this.dataNascimento = dataNascimento;
         this.turma = turma;
         this.boletim = new ArrayList<>();
-        this.status = situacaoAluno.APROVADO;
+        this.status = SituacaoAluno.APROVADO;
         this.matriculaAluno = matriculaAluno;
         this.presencas = new ArrayList<>();
     }
@@ -63,11 +63,11 @@ public class Aluno {
         return boletim;
     }
 
-    public situacaoAluno getStatus() {
+    public SituacaoAluno getStatus() {
         return status;
     }
 
-    public void setStatus(situacaoAluno status) {
+    public void setStatus(SituacaoAluno status) {
         this.status = status;
     }
 

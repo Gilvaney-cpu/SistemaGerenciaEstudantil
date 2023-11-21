@@ -15,3 +15,12 @@ O "Sistema Gerência Escolar Fundamental" é uma aplicação desenvolvido em Jav
 * O Diretor terá um CRUD para Professor, um CRUD para Aluno e criar turmas.
 * O Professor poderá atribuir notas aos Alunos, Aprovar ou Reprovar Alunos e marcar presença dos Alunos.
 * Aluno poderá ver suas notas e se está aprovado ou não.
+
+
+### Requisitos
+* Requisito 1 - Acesso ao sistema através de inserção de senha.
+* Requisito 2 - Gerar percentual de alunos aprovados na turma.
+* Requisito 3 - Gerar percentual de frequência de aluno.
+* Requisito 4 - Professor poderá atribuir notas ao aluno.
+* Requisito 5 - Professor poderá realizar a frequência do aluno.
+* Requisito 6 - O aluno poderá ser considerado reprovado se não houver frequência suficiente.
