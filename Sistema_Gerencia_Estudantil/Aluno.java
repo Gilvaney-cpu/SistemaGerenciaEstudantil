@@ -8,7 +8,7 @@ public class Aluno {
     // Atributos
     private LocalDate dataNascimento;
     private String turma;
-    private ArrayList<notasDisciplina> boletim;
+    private ArrayList<NotasDisciplina> boletim;
     private situacaoAluno status;
     private Matricula matriculaAluno;
     private ArrayList<Presenca> presencas;
@@ -23,9 +23,9 @@ public class Aluno {
         this.presencas = new ArrayList<>();
     }
     //Metódos 
-    public ArrayList<notasDisciplina> getNotas(Disciplina disciplina) {  // retorna uma lista com as notas do aluno em uma determinada disciplina.
-        ArrayList<notasDisciplina> notas = new ArrayList<>();
-        for (notasDisciplina nota : boletim) {
+    public ArrayList<NotasDisciplina> getNotas(Disciplina disciplina) {  // retorna uma lista com as notas do aluno em uma determinada disciplina.
+        ArrayList<NotasDisciplina> notas = new ArrayList<>();
+        for (NotasDisciplina nota : boletim) {
             if (nota.getDisciplina().equals(disciplina)) {
               notas.add(nota);
             }
@@ -34,9 +34,9 @@ public class Aluno {
     }
 
     public double getMedia(Disciplina disciplina) {                      //calcula a média das notas do aluno em uma determinada disciplina.
-        ArrayList<notasDisciplina> notas = getNotas(disciplina);
+        ArrayList<NotasDisciplina> notas = getNotas(disciplina);
         double soma = 0;
-        for (notasDisciplina nota : notas) {
+        for (NotasDisciplina nota : notas) {
             soma += nota.getValor();
         }
         return soma / notas.size();
@@ -59,7 +59,7 @@ public class Aluno {
         this.turma = turma;
     }
 
-    public ArrayList<notasDisciplina> getBoletim() {
+    public ArrayList<NotasDisciplina> getBoletim() {
         return boletim;
     }
 

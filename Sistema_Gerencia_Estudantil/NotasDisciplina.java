@@ -3,13 +3,13 @@ package Sistema_Gerencia_Estudantil;
 import java.util.ArrayList;
 
 
-public class notasDisciplina {
+public class NotasDisciplina {
     private Turma id; // serve como o nome da disciplina
     private Disciplina disciplina;
     private ArrayList<Double> notas;
     private ArrayList<Aluno> alunos;
 
-    public notasDisciplina (Turma id, Disciplina disciplina) {
+    public NotasDisciplina (Turma id, Disciplina disciplina) {
      setId(id);
      setDisciplina(disciplina);
      notas = new ArrayList<Double>();
