@@ -1,4 +1,4 @@
-package Sistema_Gerencia_Estudantil.models;
+package Sistema_Gerencia_Estudantil.negocio.beans;
 
 
 import java.time.LocalTime;

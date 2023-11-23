@@ -1,4 +1,4 @@
-package Sistema_Gerencia_Estudantil.models;
+package Sistema_Gerencia_Estudantil.negocio.beans;
 
 public class Usuario { //Atributos
     private String nome;

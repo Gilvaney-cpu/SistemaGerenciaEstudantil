@@ -23,4 +23,4 @@ O "Sistema Gerência Escolar Fundamental" é uma aplicação desenvolvido em Jav
 * Requisito 3 - Gerar percentual de frequência de aluno.
 * Requisito 4 - Professor poderá atribuir notas ao aluno.
 * Requisito 5 - Professor poderá realizar a frequência do aluno.
-* Requisito 6 - O aluno poderá ser considerado reprovado se não houver frequência suficiente.
+* Requisito 6 - O aluno poderá ser considerado reprovado se não houver o mínimo de nota suficiente.
