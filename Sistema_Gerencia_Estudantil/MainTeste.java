@@ -14,10 +14,10 @@ public class MainTeste {
         /* Teste de objetos Professor */
         Professor p1 = new Professor("Bárbara Lima", "07386499799", "password1","8555");
         Professor p2 = new Professor("Maria Tereza Buril", "06486578588", "password2","8556");
-        Professor p3 = new Professor("Maigan Linda Alcantara", "85438657855", "password3","8557");
+        Professor p3 = new Professor("Harvey M. Deitel", "85438657855", "password3","8557");
         Professor p4 = new Professor("Marcelo Carneiro Leao", "64027277090", "password4","8558");
         Professor p5 = new Professor("Paulo Freire", "38252243096", "password5","8559");
-        Professor p6 = new Professor("Maigan Linda Alcantara", "85438657855", "password3","8557");
+        Professor p6 = new Professor("Harvey M. Deitel", "85438657855", "password3","8557");
 
         System.out.println(p1.getCPF().length() + " - " + p1.getNome() );
         System.out.println(p2.getCPF().length() + " - " + p2.getNome() );
