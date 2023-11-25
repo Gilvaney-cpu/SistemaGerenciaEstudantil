@@ -44,8 +44,18 @@ public class Professor extends Usuario {
 
     public String toString(){
         /* Devolve o nome, id(super), nome da classe 'professor' do professor */
-        return String.format("Nome: %10s | \nId: %10s | \nCargo: %10s | \n",this.getNome()
+        return String.format("Nome: %-10s | \nId: %10s | \nCargo: %-10s |\n",this.getNome()
                 ,super.getID()
                 , this.getClass().getSimpleName().toUpperCase());
+    }
+
+    public boolean equals(Professor professor) {
+        boolean b = false;
+        if(professor != null) {
+           if(this.getCPF().equals(professor.getCPF())) {
+                b = true;
+            }
+        }
+        return b;
     }
 }

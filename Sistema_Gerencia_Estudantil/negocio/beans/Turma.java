@@ -19,7 +19,7 @@ public class Turma { //Atributos
 
      // Método para adicionar um aluno à turma
     public void adicionarAluno(String IDaluno) {
-        alunos.add(IDaluno);
+        //alunos.add(IDaluno);
     }
     //exemplo:
    // Turma turma = new Turma(1, "Turma A", "Manhã");

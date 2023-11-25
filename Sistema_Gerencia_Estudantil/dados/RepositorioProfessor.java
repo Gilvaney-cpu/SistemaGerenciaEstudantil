@@ -15,13 +15,22 @@ public class RepositorioProfessor {
         /* método construtor vazio*/
     }
 
-    /* Adiciona o professor passado como parâmetro ao repositório - create */
+    /* Adiciona o professor passado como parâmetro ao repositório - Create */
     public void inserirProfessor(Professor professor) {
-        if(professor != null && (!(repositorioProfessor.contains(professor))) ) {
-            repositorioProfessor.add(professor); // adiciona o professor ao repositório
+        if(professor != null) {
+            if (repositorioProfessor.isEmpty()) {
+                repositorioProfessor.add(professor);
+            } else {
+                if(!repositorioProfessor.contains(professor)) {
+                    repositorioProfessor.add(professor);
+                }
+
+                }
+            }
         }
-    }
-    /* Retorna uma lista de professores cadastrados no repositório  - recover */
+
+
+    /* Retorna uma lista de professores cadastrados no repositório  - Retrieve */
     public ArrayList<Professor> listarProfessores() {
         ArrayList<Professor> lista = new ArrayList<>();
         if (!repositorioProfessor.isEmpty()) {
@@ -34,7 +43,7 @@ public class RepositorioProfessor {
         return lista;
     }
 
-    /* Remove professor (passado como parâmetro) do repositorio - remove */
+    /* Remove professor (passado como parâmetro) do repositorio - Delete */
     public void removerProfessor(Professor professor) {
         if(professor != null && repositorioProfessor.contains(professor)) {
             repositorioProfessor.remove(professor);
@@ -42,7 +51,7 @@ public class RepositorioProfessor {
 
     }
 
-    /* Atualiza um professor que já esteja no repositório */
+    /* Atualiza um professor que já esteja no repositório  - Update*/
     public ArrayList<Professor> atualizarProfessor(Professor professor) {
         ArrayList<Professor> lista = new ArrayList<>();
         if(professor != null && repositorioProfessor.contains(professor)) {

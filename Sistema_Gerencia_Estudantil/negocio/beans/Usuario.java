@@ -18,7 +18,7 @@ public class Usuario { //Atributos
     }
 //exemplo:
   //  Usuario usuario = new Usuario("João", "123456789", "senha123", "U1");
-usuario.apresentarUsuario();
+//usuario.apresentarUsuario();
 
     // getters e setters
     public String getNome() {
