@@ -1,7 +1,9 @@
 package Sistema_Gerencia_Estudantil;
 
+import Sistema_Gerencia_Estudantil.dados.RepositorioProfArray;
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfessor;
 import Sistema_Gerencia_Estudantil.negocio.ControllerProfessor;
+import Sistema_Gerencia_Estudantil.negocio.ControllerProfessorArray;
 import Sistema_Gerencia_Estudantil.negocio.beans.Professor;
 
 /**
@@ -50,6 +52,35 @@ public class MainTeste {
         /* Método Update */
         ControllerProfessor.getInstance().atualizar(p1);
         System.out.println(ControllerProfessor.getInstance().listar());
+
+
+        /* Seção de testes com Controller e Repositorio Baseados em Array */
+        System.out.println("\n*** \t TESTE ARRAY \t ***");
+
+        ControllerProfessorArray controllerProfessorArray = new ControllerProfessorArray();
+        //controllerProfessorArray.cadastrarProf(p6);
+        /* Teste Cadastro - método Create */
+//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p1);
+//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p2);
+//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p3);
+//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p4);
+//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p5);
+//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p6);
+//        /* Teste método existe */
+        controllerProfessorArray.cadastrarProf(p6);
+        controllerProfessorArray.cadastrarProf(p4);
+        System.out.println(controllerProfessorArray.existe(p6));
+        System.out.println(p3.equals(p6)); // teste método equals classe Professor
+        System.out.println(controllerProfessorArray.procurar(p6).getNome() + " " + controllerProfessorArray.procurar(p6).getCPF());
+        /* Teste método remover - Método Delete */
+        controllerProfessorArray.descadastrarProf(p4);
+        //controllerProfessorArray.getRepositorioProfArray().removerProf(p4.getCPF());
+        System.out.println(controllerProfessorArray.existe(p6));
+        System.out.println(controllerProfessorArray.procurar(p4));
+
+        System.out.println(controllerProfessorArray.procurar(p6));
+
+
 
 
 
