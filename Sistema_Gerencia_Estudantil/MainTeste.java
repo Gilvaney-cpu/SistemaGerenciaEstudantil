@@ -2,9 +2,14 @@ package Sistema_Gerencia_Estudantil;
 
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfArray;
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfessor;
+import Sistema_Gerencia_Estudantil.negocio.ControllerDisciplinaArray;
 import Sistema_Gerencia_Estudantil.negocio.ControllerProfessor;
 import Sistema_Gerencia_Estudantil.negocio.ControllerProfessorArray;
+import Sistema_Gerencia_Estudantil.negocio.beans.Disciplina;
 import Sistema_Gerencia_Estudantil.negocio.beans.Professor;
+import Sistema_Gerencia_Estudantil.negocio.beans.Turma;
+
+import java.time.LocalTime;
 
 /**
  * Classe para Teste das funcionalidades do sistema
@@ -81,9 +86,27 @@ public class MainTeste {
         System.out.println(controllerProfessorArray.procurar(p6));
 
 
+        /* TESTE DISCIPLINA*/
+        System.out.println("\n***\tTeste Controller e repositorio classe Disciplina \t***\n");
+        Disciplina d1 = new Disciplina("Português", p1, LocalTime.of(7,30),new Turma(124,"3 ANO C","Paula Tejano", "Manhã"));
+        Disciplina d2 = new Disciplina("Biologia", p2, LocalTime.of(8,40),new Turma(124,"3 ANO C","Etê Bilú", "Manhã"));
+        Disciplina d3 = new Disciplina("Filosofia", p5, LocalTime.of(9,50),new Turma(124,"3 ANO C","Nelson Rodrigues", "Manhã"));
 
-
-
-
+        ControllerDisciplinaArray controllerDisciplinaArray = new ControllerDisciplinaArray();
+        /* teste método cadastrar - CREATE */
+        controllerDisciplinaArray.cadastrarDisciplina(d1);
+        controllerDisciplinaArray.cadastrarDisciplina(d2);
+        controllerDisciplinaArray.cadastrarDisciplina(d3);
+        /* teste método existe */
+        System.out.println(controllerDisciplinaArray.existe(d1));
+        System.out.println(controllerDisciplinaArray.existe(d2));
+        System.out.println(controllerDisciplinaArray.existe(d3));
+        /* teste método procurar - READ */
+        System.out.println(controllerDisciplinaArray.procurar(d1).getNome() + " - horário: " + controllerDisciplinaArray.procurar(d1).getHorario() );
+        System.out.println(controllerDisciplinaArray.procurar(d2).getNome() + " - horário: " + controllerDisciplinaArray.procurar(d2).getHorario() );
+        System.out.println(controllerDisciplinaArray.procurar(d3).getNome() + " - horário: " + controllerDisciplinaArray.procurar(d3).getHorario() );
+        /* teste método remover - DELETE */
+        controllerDisciplinaArray.remover(d2);
+        System.out.println(controllerDisciplinaArray.existe(d2));
     }
 }

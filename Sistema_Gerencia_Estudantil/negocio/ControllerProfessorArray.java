@@ -4,9 +4,7 @@ import Sistema_Gerencia_Estudantil.dados.RepositorioProfArray;
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfessorArray;
 import Sistema_Gerencia_Estudantil.negocio.beans.Professor;
 
-/**
- * @author Ramon Vilela
- */
+
 public class ControllerProfessorArray {
 
     private RepositorioProfArray repositorioProfArray;

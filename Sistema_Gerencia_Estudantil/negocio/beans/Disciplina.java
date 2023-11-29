@@ -12,13 +12,15 @@ public class Disciplina {
     private ArrayList<Aluno> alunos; // - idAluno: String
     private ArrayList<Double> notasDisciplina; // - nota: notasDisciplina
     private ArrayList<Presenca> presencas;
+    private Turma turma;
 
-    public Disciplina (String nome, Professor professor, LocalTime horario) {
+    public Disciplina (String nome, Professor professor, LocalTime horario, Turma turma) {
         setNome(nome);
         setProfessor(professor);
         setHorario(horario);
         alunos = new ArrayList<Aluno>();
         presencas = new ArrayList<Presenca>();
+        setTurma(turma);
 
     }
 
@@ -77,4 +79,11 @@ public class Disciplina {
         this.notasDisciplina = notasDisciplina;
     }
 
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
+    }
 }
