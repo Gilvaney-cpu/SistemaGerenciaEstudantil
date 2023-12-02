@@ -81,7 +81,7 @@ public class RepositorioDisciplinaArray {
     }
 
     /* Método que retorna uma disciplina do repositório  - Read */
-    public Disciplina procurarDisciplina(Disciplina d) {
+    public Disciplina  procurarDisciplina(Disciplina d) {
         Disciplina resultado = null;
         if (d != null) {
             int i = this.procurarPosicao(d);

@@ -2,13 +2,10 @@ package Sistema_Gerencia_Estudantil;
 
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfArray;
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfessor;
-import Sistema_Gerencia_Estudantil.negocio.ControllerDisciplinaArray;
-import Sistema_Gerencia_Estudantil.negocio.ControllerProfessor;
-import Sistema_Gerencia_Estudantil.negocio.ControllerProfessorArray;
-import Sistema_Gerencia_Estudantil.negocio.beans.Disciplina;
-import Sistema_Gerencia_Estudantil.negocio.beans.Professor;
-import Sistema_Gerencia_Estudantil.negocio.beans.Turma;
+import Sistema_Gerencia_Estudantil.negocio.*;
+import Sistema_Gerencia_Estudantil.negocio.beans.*;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
@@ -108,5 +105,28 @@ public class MainTeste {
         /* teste método remover - DELETE */
         controllerDisciplinaArray.remover(d2);
         System.out.println(controllerDisciplinaArray.existe(d2));
+
+        /* TESTE NotasDisciplinaArray CONTROLLER E REPOSITORIO */
+        System.out.println("*** \t TESTE NotasDisciplinaArray CONTROLLER E REPOSITORIO \t ***");
+       Turma t1 = new Turma(124,"3 ANO C","Paula Tejano", "Manhã");
+        NotasDisciplina ntd1 = new NotasDisciplina(t1,d1);
+        ControllerNotasDisciplinaArray.getInstance().inserir(ntd1);
+        System.out.println(ControllerNotasDisciplinaArray.getInstance().procurar(ntd1));
+        System.out.println("Usando método 'existe': " + ControllerNotasDisciplinaArray.getInstance().existe(ntd1));
+        ControllerNotasDisciplinaArray.getInstance().remover(ntd1);
+        System.out.println("Usando método 'existe' depois de remover: " + ControllerNotasDisciplinaArray.getInstance().existe(ntd1));
+
+        /* TESTE PresencaArray CONTROLLER E REPOSITORIO */
+        System.out.println();
+        System.out.println("*** \t TESTE PresencaArray CONTROLLER E REPOSITORIO \t ***");
+        Presenca presenca1 = new Presenca(LocalDate.of(2023,12,1),"3 ANO B","Rolando Lero");
+        ControllerPresencaArray.getInstance().inserir(presenca1);
+        System.out.println(ControllerPresencaArray.getInstance().procurar(presenca1));
+        System.out.println("Usando o método 'existe': " + ControllerPresencaArray.getInstance().existe(presenca1));
+        ControllerPresencaArray.getInstance().remover(presenca1);
+        System.out.println("Usando o método 'existe' depois de remover: " + ControllerPresencaArray.getInstance().existe(presenca1));
+
+
+
     }
 }

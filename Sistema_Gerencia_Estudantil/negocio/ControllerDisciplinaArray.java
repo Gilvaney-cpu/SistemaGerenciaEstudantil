@@ -38,6 +38,7 @@ public class ControllerDisciplinaArray {
         }
     }
 
+    /* Devolve um boolean (true) se o parâmetro passado existe no repositorio */
     public boolean existe(Disciplina d) {
         return this.repositorioDisciplinaArray.existe(d);
     }
