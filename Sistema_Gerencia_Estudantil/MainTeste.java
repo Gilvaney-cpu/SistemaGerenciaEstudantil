@@ -115,6 +115,14 @@ public class MainTeste {
         ControllerPresencaArray.getInstance().remover(presenca1);
         System.out.println("Usando o método 'existe' depois de remover: " + ControllerPresencaArray.getInstance().existe(presenca1));
 
+        /* Teste métodos atribuirNota e atribuirPresenca */
+        Matricula m1 = new Matricula("07653123","Português",2023,1);
+        Aluno aluno1 = new Aluno(LocalDate.of(2009,12,03), t1.getNome(),m1 );
+        ControllerProfessorArray.getInstance().atribuirNota(p1,t1,d1,aluno1,8.7);
+        ControllerProfessorArray.getInstance().atribuirPresenca(p1,t1,d1,aluno1);
+
+
+
 
 
     }

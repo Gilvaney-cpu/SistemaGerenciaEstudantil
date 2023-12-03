@@ -10,7 +10,7 @@ Classe Turma;
 Classe Professor;
 Classe Disciplina;
 Classe Presença 
-Classe notasDisciplina;
+Classe NotasDisciplina;
 
  - Gilvaney Daniel:
 Classe Aluno;

@@ -3,9 +3,7 @@ package Sistema_Gerencia_Estudantil.negocio;
 import Sistema_Gerencia_Estudantil.dados.RepositorioPresencaArray;
 import Sistema_Gerencia_Estudantil.negocio.beans.Presenca;
 
-/**
- * Singleton Pattern
- */
+
 public class ControllerPresencaArray {
 
     private RepositorioPresencaArray repositorioPresencaArray;

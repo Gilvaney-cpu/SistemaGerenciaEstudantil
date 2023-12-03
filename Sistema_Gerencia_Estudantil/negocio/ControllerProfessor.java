@@ -76,6 +76,7 @@ public class ControllerProfessor {
                 if (professor.getTurma().get(i).equals(turma)
                         && professor.getTurma().get(i).getDisciplinas().get(i).getAlunos().get(i).equals(aluno)) {
                     /* Atribui presença no aluno passando a data, nome da turma e cpf do aluno na presença */
+
                     professor.getTurma().get(i)
                             .getDisciplinas().get(i)
                             .getAlunos().get(i)

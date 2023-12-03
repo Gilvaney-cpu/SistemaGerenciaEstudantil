@@ -4,9 +4,7 @@ package Sistema_Gerencia_Estudantil.negocio;
 import Sistema_Gerencia_Estudantil.dados.RepositorioNotasDisciplinaArray;
 import Sistema_Gerencia_Estudantil.negocio.beans.NotasDisciplina;
 
-/*
-*  Singleton Pattern
-* */
+
 public class ControllerNotasDisciplinaArray {
 
     private RepositorioNotasDisciplinaArray repositorioNotasDisciplinaArray;
