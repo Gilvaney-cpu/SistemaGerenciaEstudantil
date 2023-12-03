@@ -8,12 +8,19 @@ import Sistema_Gerencia_Estudantil.negocio.beans.Professor;
 public class ControllerProfessorArray {
 
     private RepositorioProfArray repositorioProfArray;
+    private static ControllerProfessorArray instance;
 
     /* Método Construtor */
-    public ControllerProfessorArray() {
+    private ControllerProfessorArray() {
         repositorioProfArray = new RepositorioProfArray(100);
     }
 
+    public static ControllerProfessorArray getInstance() {
+        if(instance == null) {
+            instance = new ControllerProfessorArray();
+        }
+        return instance;
+    }
     /* Método que cadastra um professor no repositório - Create */
     public void cadastrarProf(Professor p) {
         if(p != null

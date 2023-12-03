@@ -57,54 +57,43 @@ public class MainTeste {
 
 
         /* Seção de testes com Controller e Repositorio Baseados em Array */
-        System.out.println("\n*** \t TESTE ARRAY \t ***");
-
-        ControllerProfessorArray controllerProfessorArray = new ControllerProfessorArray();
-        //controllerProfessorArray.cadastrarProf(p6);
-        /* Teste Cadastro - método Create */
-//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p1);
-//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p2);
-//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p3);
-//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p4);
-//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p5);
-//        controllerProfessorArray.getRepositorioProfArray().inserirProf(p6);
-//        /* Teste método existe */
-        controllerProfessorArray.cadastrarProf(p6);
-        controllerProfessorArray.cadastrarProf(p4);
-        System.out.println(controllerProfessorArray.existe(p6));
+        System.out.println("\n*** \t TESTE ProfARRAY \t ***");
+        ControllerProfessorArray.getInstance().cadastrarProf(p1);
+        ControllerProfessorArray.getInstance().cadastrarProf(p2);
+        ControllerProfessorArray.getInstance().cadastrarProf(p3);
+        ControllerProfessorArray.getInstance().cadastrarProf(p4);
+        ControllerProfessorArray.getInstance().cadastrarProf(p5);
+        ControllerProfessorArray.getInstance().cadastrarProf(p6);
         System.out.println(p3.equals(p6)); // teste método equals classe Professor
-        System.out.println(controllerProfessorArray.procurar(p6).getNome() + " " + controllerProfessorArray.procurar(p6).getCPF());
-        /* Teste método remover - Método Delete */
-        controllerProfessorArray.descadastrarProf(p4);
-        //controllerProfessorArray.getRepositorioProfArray().removerProf(p4.getCPF());
-        System.out.println(controllerProfessorArray.existe(p6));
-        System.out.println(controllerProfessorArray.procurar(p4));
+        /* Teste Existe e Procurar */
+        System.out.println(ControllerProfessorArray.getInstance().existe(p6));
+        System.out.println(ControllerProfessorArray.getInstance().procurar(p6).getNome() + " " + ControllerProfessorArray.getInstance().procurar(p6).getCPF());
+        /* Teste Delete */
+        ControllerProfessorArray.getInstance().descadastrarProf(p4);
+        System.out.println(ControllerProfessorArray.getInstance().existe(p4));
+        System.out.println(ControllerProfessorArray.getInstance().existe(p6));
+        System.out.println(ControllerProfessorArray.getInstance().procurar(p6));
 
-        System.out.println(controllerProfessorArray.procurar(p6));
-
-
-        /* TESTE DISCIPLINA*/
+        /* TESTE DISCIPLINAARRAY */
         System.out.println("\n***\tTeste Controller e repositorio classe Disciplina \t***\n");
         Disciplina d1 = new Disciplina("Português", p1, LocalTime.of(7,30),new Turma(124,"3 ANO C","Paula Tejano", "Manhã"));
         Disciplina d2 = new Disciplina("Biologia", p2, LocalTime.of(8,40),new Turma(124,"3 ANO C","Etê Bilú", "Manhã"));
         Disciplina d3 = new Disciplina("Filosofia", p5, LocalTime.of(9,50),new Turma(124,"3 ANO C","Nelson Rodrigues", "Manhã"));
-
-        ControllerDisciplinaArray controllerDisciplinaArray = new ControllerDisciplinaArray();
-        /* teste método cadastrar - CREATE */
-        controllerDisciplinaArray.cadastrarDisciplina(d1);
-        controllerDisciplinaArray.cadastrarDisciplina(d2);
-        controllerDisciplinaArray.cadastrarDisciplina(d3);
-        /* teste método existe */
-        System.out.println(controllerDisciplinaArray.existe(d1));
-        System.out.println(controllerDisciplinaArray.existe(d2));
-        System.out.println(controllerDisciplinaArray.existe(d3));
-        /* teste método procurar - READ */
-        System.out.println(controllerDisciplinaArray.procurar(d1).getNome() + " - horário: " + controllerDisciplinaArray.procurar(d1).getHorario() );
-        System.out.println(controllerDisciplinaArray.procurar(d2).getNome() + " - horário: " + controllerDisciplinaArray.procurar(d2).getHorario() );
-        System.out.println(controllerDisciplinaArray.procurar(d3).getNome() + " - horário: " + controllerDisciplinaArray.procurar(d3).getHorario() );
-        /* teste método remover - DELETE */
-        controllerDisciplinaArray.remover(d2);
-        System.out.println(controllerDisciplinaArray.existe(d2));
+        /* Teste Create */
+        ControllerDisciplinaArray.getInstance().cadastrarDisciplina(d1);
+        ControllerDisciplinaArray.getInstance().cadastrarDisciplina(d2);
+        ControllerDisciplinaArray.getInstance().cadastrarDisciplina(d3);
+        /* Teste Existe */
+        System.out.println(ControllerDisciplinaArray.getInstance().existe(d1));
+        System.out.println(ControllerDisciplinaArray.getInstance().existe(d2));
+        System.out.println(ControllerDisciplinaArray.getInstance().existe(d3));
+        /* Teste Procurar */
+        System.out.println(ControllerDisciplinaArray.getInstance().procurar(d1).getNome() + " - Horário: " + ControllerDisciplinaArray.getInstance().procurar(d1).getHorario());
+        System.out.println(ControllerDisciplinaArray.getInstance().procurar(d2).getNome() + " - Horário: " + ControllerDisciplinaArray.getInstance().procurar(d2).getHorario());
+        System.out.println(ControllerDisciplinaArray.getInstance().procurar(d3).getNome() + " - Horário: " + ControllerDisciplinaArray.getInstance().procurar(d3).getHorario());
+        /* Teste Delete */
+        ControllerDisciplinaArray.getInstance().remover(d2);
+        System.out.println(ControllerDisciplinaArray.getInstance().existe(d2));
 
         /* TESTE NotasDisciplinaArray CONTROLLER E REPOSITORIO */
         System.out.println("*** \t TESTE NotasDisciplinaArray CONTROLLER E REPOSITORIO \t ***");

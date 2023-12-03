@@ -7,10 +7,20 @@ import Sistema_Gerencia_Estudantil.negocio.beans.Disciplina;
 public class ControllerDisciplinaArray {
 
     private RepositorioDisciplinaArray repositorioDisciplinaArray;
+    private static ControllerDisciplinaArray instance;
 
     /* Método construtor */
-    public ControllerDisciplinaArray() {
+    private ControllerDisciplinaArray() {
         repositorioDisciplinaArray = new RepositorioDisciplinaArray(100);
+    }
+
+    /* Implementação Padrão Singleton */
+    public static ControllerDisciplinaArray getInstance() {
+        if(instance == null) {
+            instance = new ControllerDisciplinaArray();
+        }
+
+        return instance;
     }
 
     /* Método que cadastra uma disciplina no repositório - Create */
@@ -43,30 +53,4 @@ public class ControllerDisciplinaArray {
         return this.repositorioDisciplinaArray.existe(d);
     }
 
-    public RepositorioDisciplinaArray getRepositorioDisciplinaArray() {
-        return repositorioDisciplinaArray;
-    }
-
-    public void setRepositorioDisciplinaArray(RepositorioDisciplinaArray repositorioDisciplinaArray) {
-        this.repositorioDisciplinaArray = repositorioDisciplinaArray;
-    }
 }
-
-/*
-        IMPLEMENTAÇÃO PADRÃO SINGLETON
-*
-//* private static ControllerDisciplinaArray instance;
-//* private RepositorioDisciplinaArray repositorioDisciplinaArray;
-//*
-//* public ControllerDisciplinaArray () {
-//*   this.RepositorioDisciplinaArray = new RepositorioDisciplinaArray(100);
-//* }
-//*
-//* public static ControllerDisciplinaArray getInstance() {
-//*   if(instance == null) {
-//*   instance = new ControllerDisciplinaArray();
-//* }
-//*   return instance;
-//* }
-//*
-* */
