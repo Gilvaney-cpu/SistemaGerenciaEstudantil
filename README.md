@@ -16,4 +16,12 @@ O "Sistema Gerência Escolar Fundamental" é uma aplicação desenvolvido em Jav
 * Requisito 4 - Professor poderá atribuir notas ao aluno.
 * Requisito 5 - Professor poderá realizar a frequência do aluno.
 * Requisito 6 - O aluno poderá ser considerado reprovado se não houver o mínimo de nota suficiente.
-* Requisito 7 - O diretor ou professor poderá emitir um aviso para os alunos.
+* Requisito 7 - Enviar comunicados, boletins e informações sobre eventos escolares.
+* Requisito 8 - Realizar a matrícula de alunos em diferentes turmas.
+* Requisito 9 - Permitir a alocação de alunos em disciplinas específicas.
+* Requisito 10 - Manter uma grade curricular, indicando quais disciplinas são oferecidas em cada turma.
+* Requisito 11 - Gerar boletins com as notas dos alunos ao final de cada período letivo.
+* Requisito 12 - Manter uma grade curricular, indicando quais disciplinas são oferecidas em cada turma.
+* Requisito 13 - Definir horários de aulas para cada turma.
+* Requisito 14 - Manter informações sobre atividades extracurriculares oferecidas.
+* Requisito 15 - Realizar avaliações institucionais.
