@@ -44,8 +44,10 @@ public class RepositorioAluno {
         ArrayList<Aluno> lista = new ArrayList<>();
         if (aluno != null && repositorioAluno.contains(aluno)) {
             for (int i = 0; i < repositorioAluno.size(); i++) {
-                if (repositorioAluno.get(i).getMatricula().equals(aluno.getMatricula())) {
+                /*if (repositorioAluno.get(i).getMatricula().equals(aluno.getMatricula())) {
                     repositorioAluno.remove(repositorioAluno.get(i)); // removeu o aluno desejado
+                }*/ if(repositorioAluno.get(i).getMatriculaAluno().getIdMatricula().equals(aluno.getMatriculaAluno().getIdMatricula()) ) {
+                    this.removerAluno(aluno);
                 }
             }
             this.inserirAluno(aluno); // reinseriu o aluno

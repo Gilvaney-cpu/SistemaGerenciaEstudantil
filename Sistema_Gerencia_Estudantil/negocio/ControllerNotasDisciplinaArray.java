@@ -2,6 +2,8 @@ package Sistema_Gerencia_Estudantil.negocio;
 
 
 import Sistema_Gerencia_Estudantil.dados.RepositorioNotasDisciplinaArray;
+import Sistema_Gerencia_Estudantil.exceptions.NotasDisciplinaJaExisteException;
+import Sistema_Gerencia_Estudantil.exceptions.NotasDisciplinaNaoExisteException;
 import Sistema_Gerencia_Estudantil.negocio.beans.NotasDisciplina;
 
 
@@ -13,7 +15,8 @@ public class ControllerNotasDisciplinaArray {
 
     /* Método construtor */
     private ControllerNotasDisciplinaArray() {
-        this.repositorioNotasDisciplinaArray = new RepositorioNotasDisciplinaArray(100);
+        //this.repositorioNotasDisciplinaArray = new RepositorioNotasDisciplinaArray(100);
+        this.repositorioNotasDisciplinaArray = RepositorioNotasDisciplinaArray.getInstance();
     }
 
     /* Implementação Padrão Singleton */
@@ -25,12 +28,18 @@ public class ControllerNotasDisciplinaArray {
     }
 
     /* Método que cadastra uma NotaDisciplina no repositório - Create */
-    public void inserir(NotasDisciplina n) {
+    public void inserir(NotasDisciplina n) throws NotasDisciplinaJaExisteException {
 
-        if(n != null && (!this.repositorioNotasDisciplinaArray.existe(n))) {
+        if (n != null
+                && (!this.repositorioNotasDisciplinaArray.existe(n))) {
             this.repositorioNotasDisciplinaArray.inserirNotasDisciplina(n);
+            this.repositorioNotasDisciplinaArray.salvarArquivo();
         } else {
-            /* Oportunidade para lidar com o caso de Exceptions */
+            if (n == null) {
+                throw new IllegalArgumentException("Parâmetro passado é inválido!");
+            } else {
+                throw new NotasDisciplinaJaExisteException(n.getDisciplina().getNome());
+            }
         }
     }
 
@@ -44,18 +53,19 @@ public class ControllerNotasDisciplinaArray {
     }
 
     /* Retorna uma NotasDiciplina se ela estiver no repositório - Read */
-    public NotasDisciplina procurar(NotasDisciplina n) {
+    public NotasDisciplina procurar(NotasDisciplina n) throws NotasDisciplinaNaoExisteException {
 
         return this.repositorioNotasDisciplinaArray.procurarNotasDisciplina(n);
     }
 
     /* Remove uma NotasDiciplina do repositório, caso ela exista nele  - Delete */
-    public void remover(NotasDisciplina n) {
+    public void remover(NotasDisciplina n) throws NotasDisciplinaNaoExisteException {
         NotasDisciplina notinha = this.repositorioNotasDisciplinaArray.procurarNotasDisciplina(n);
         if(notinha != null) {
             this.repositorioNotasDisciplinaArray.removerNotaDisciplina(notinha);
+            this.repositorioNotasDisciplinaArray.salvarArquivo();
         } else {
-            // oportunidade de exceptions aqui (throw new NaoExisteException();)
+            throw new NotasDisciplinaNaoExisteException(n.getDisciplina().getNome());
         }
     }
 

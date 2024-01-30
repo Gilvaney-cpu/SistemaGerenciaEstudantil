@@ -2,6 +2,8 @@ package Sistema_Gerencia_Estudantil.negocio;
 
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfArray;
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfessorArray;
+import Sistema_Gerencia_Estudantil.exceptions.ProfessorJaExisteException;
+import Sistema_Gerencia_Estudantil.exceptions.ProfessorNaoExisteException;
 import Sistema_Gerencia_Estudantil.negocio.beans.*;
 
 import java.time.LocalDate;
@@ -14,7 +16,8 @@ public class ControllerProfessorArray {
 
     /* Método Construtor */
     private ControllerProfessorArray() {
-        repositorioProfArray = new RepositorioProfArray(100);
+        //repositorioProfArray = new RepositorioProfArray(100);
+        repositorioProfArray = RepositorioProfArray.getInstance();
     }
 
     public static ControllerProfessorArray getInstance() {
@@ -25,17 +28,23 @@ public class ControllerProfessorArray {
     }
 
     /* Método que cadastra um professor no repositório - Create */
-    public void cadastrarProf(Professor p) {
+    public void cadastrarProf(Professor p) throws ProfessorJaExisteException {
         if (p != null
                 && !this.repositorioProfArray.existe(p.getCPF())) {
             this.repositorioProfArray.inserirProf(p);
+            this.repositorioProfArray.salvarArquivo();
         } else {
-            /* Oportunidade para lidar com o caso de Exceptions */
+            if (p == null) {
+                throw new IllegalArgumentException("Parâmetro passado é inválido!");
+            } else {
+
+                throw new ProfessorJaExisteException(p.getCPF());
+            }
         }
     }
 
     /* Método que busca um professor no repositorio e retorna objeto Professor, caso exista - Read */
-    public Professor procurar(Professor p) {
+    public Professor procurar(Professor p) throws ProfessorNaoExisteException {
         return this.repositorioProfArray.procurarProf(p.getCPF());
     }
 
@@ -46,12 +55,14 @@ public class ControllerProfessorArray {
     }
 
     /* Método que remove o professor passado como parâmetro do repositório  - Delete */
-    public void descadastrarProf(Professor professor) {
+    public void descadastrarProf(Professor professor) throws ProfessorNaoExisteException {
         Professor p = this.repositorioProfArray.procurarProf(professor.getCPF());
         if (p != null) {
             this.repositorioProfArray.removerProf(professor.getCPF());
+            this.repositorioProfArray.salvarArquivo();
         } else {
             // oportunidade de exceptions aqui
+            throw new ProfessorNaoExisteException(professor.getCPF());
         }
     }
 
@@ -63,7 +74,7 @@ public class ControllerProfessorArray {
                 && ((aluno != null) && (nota >= 0.0 && nota <= 10.0))) {
             /* percorre por todas as turmas do professor*/
             for (int i = 0; i < professor.getTurma().size(); i++) {
-                /* Verifica se aluno, disciplina e turma são encontrados s*/
+                /* Verifica se aluno, disciplina e turma são encontrados */
                 if (aluno.equals(professor.getDisciplina().get(i).getAlunos().get(i))
                         && ((professor.getDisciplina().contains(disciplina) && professor.getTurma().contains(turma)))) {
 

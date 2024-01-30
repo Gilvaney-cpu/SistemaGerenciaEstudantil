@@ -48,7 +48,7 @@ public class ControllerAluno {
         /* Checa se a turma e disciplina são nulas */
         if (turma != null && disciplina != null) {
             /* Atribui presença no aluno passando a data, nome da turma e cpf do aluno na presença */
-            aluno.getPresencas().add(new Presenca(LocalDate.now(), turma.getNome(), aluno.getCPF()));
+            aluno.getPresencas().add(new Presenca(LocalDate.now(), turma.getNome(),aluno.getCPF()));
         }
     }
 }

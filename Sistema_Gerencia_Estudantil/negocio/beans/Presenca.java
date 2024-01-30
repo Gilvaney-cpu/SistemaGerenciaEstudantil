@@ -1,8 +1,12 @@
 package Sistema_Gerencia_Estudantil.negocio.beans;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Presenca {
+public class Presenca implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -2382549279036805176L;
     private LocalDate data;
     private boolean presente;
     private String idTurma;

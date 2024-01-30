@@ -1,11 +1,15 @@
 package Sistema_Gerencia_Estudantil.negocio.beans;
 
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class Disciplina {
+public class Disciplina implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = -1023971375597729825L;
     private String nome;
     private Professor professor; // - idProfessor: String
     private LocalTime horario; // - horario: String

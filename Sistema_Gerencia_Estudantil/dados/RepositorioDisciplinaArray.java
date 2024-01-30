@@ -1,16 +1,81 @@
 package Sistema_Gerencia_Estudantil.dados;
 
 
+import Sistema_Gerencia_Estudantil.exceptions.DisciplinaNaoExisteException;
 import Sistema_Gerencia_Estudantil.negocio.beans.Disciplina;
 
-public class RepositorioDisciplinaArray {
+import java.io.*;
+
+public class RepositorioDisciplinaArray implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -3236304934842510866L;
     private Disciplina[] disciplinas;
     private int proxima;
+    private static RepositorioDisciplinaArray instance;
 
     /* Método construtor */
-    public RepositorioDisciplinaArray(int tamanho) {
+    private RepositorioDisciplinaArray(int tamanho) {
         disciplinas = new Disciplina[tamanho];
         proxima = 0;
+    }
+
+    /* Implementação do Padrão Singleton */
+    public static RepositorioDisciplinaArray getInstance() {
+        if(instance == null) {
+            instance = lerDoArquivo();
+        }
+        return instance;
+    }
+
+    private static RepositorioDisciplinaArray lerDoArquivo() {
+        RepositorioDisciplinaArray instanciaLocal = null;
+
+        File entrada = new File("disciplinas.dat");
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            fis = new FileInputStream(entrada);
+            ois = new ObjectInputStream(fis);
+            Object o = ois.readObject();
+            instanciaLocal = (RepositorioDisciplinaArray) o; // cast necessário para instanciar o repositorio
+        }catch (Exception e) {
+            // Captura a condição de não existir o arquivo
+            instanciaLocal = new RepositorioDisciplinaArray(100);
+        } finally {
+            //snippet que fecha o stream de dados
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (Exception e ){
+
+                }
+            }
+        }
+        return instanciaLocal;
+    }
+
+    public void salvarArquivo() {
+        if(instance == null) {
+            return;
+        }
+        File saida = new File("disciplinas.dat");
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(saida);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(instance);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(oos != null) {
+                try {
+                    oos.close();
+                } catch (Exception e) {
+
+                }
+            }
+        }
     }
 
     /* Insere uma disciplina no repositório - Create */
@@ -65,31 +130,31 @@ public class RepositorioDisciplinaArray {
     }
 
     /* Método que remove disciplina do repositório - Delete */
-    public void removerDisciplina(Disciplina d) {
-        if (d != null) {
+    public void removerDisciplina(Disciplina d) throws DisciplinaNaoExisteException {
+
             int i = procurarPosicao(d);
             if (i != this.proxima) {
             this.disciplinas[i] = this.disciplinas[this.proxima - 1];
             this.disciplinas[this.proxima - 1] = null;
             this.proxima--;
             } else {
-                /* código para apresentar erro ao usuário */
-                //possibilidade de inserção de exceptions
+                /* código para apresentar "erro" ao usuário */
+                throw new DisciplinaNaoExisteException(d.getNome());
             }
-        }
 
     }
 
     /* Método que retorna uma disciplina do repositório  - Read */
-    public Disciplina  procurarDisciplina(Disciplina d) {
+    public Disciplina  procurarDisciplina(Disciplina d) throws DisciplinaNaoExisteException {
+
+        int i = this.procurarPosicao(d);
         Disciplina resultado = null;
-        if (d != null) {
-            int i = this.procurarPosicao(d);
             if(i != this.proxima) {
                 resultado = this.disciplinas[i];
+            } else {
+                throw new DisciplinaNaoExisteException(d.getNome());
             }
 
-        }
         return resultado;
     }
 

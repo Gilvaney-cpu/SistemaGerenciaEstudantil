@@ -1,9 +1,13 @@
 package Sistema_Gerencia_Estudantil.negocio.beans;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class NotasDisciplina {
+public class NotasDisciplina implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -9160404394394730670L;
     private Turma id; // serve como o nome da disciplina
     private Disciplina disciplina;
     private ArrayList<Double> notas;

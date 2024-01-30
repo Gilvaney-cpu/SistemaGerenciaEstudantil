@@ -1,19 +1,83 @@
 package Sistema_Gerencia_Estudantil.dados;
 
 
+import Sistema_Gerencia_Estudantil.exceptions.NotasDisciplinaNaoExisteException;
 import Sistema_Gerencia_Estudantil.negocio.beans.Disciplina;
 import Sistema_Gerencia_Estudantil.negocio.beans.NotasDisciplina;
 
-public class RepositorioNotasDisciplinaArray {
+import java.io.*;
 
+public class RepositorioNotasDisciplinaArray implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -2082053928932491089L;
     private NotasDisciplina[] notasDisciplinas;
     private int proximo;
+    private static RepositorioNotasDisciplinaArray instance;
 
-    public RepositorioNotasDisciplinaArray(int tamanho) {
+    /* Método Construtor */
+    private RepositorioNotasDisciplinaArray(int tamanho) {
 
         this.notasDisciplinas = new NotasDisciplina[tamanho];
         this.proximo = 0;
 
+    }
+
+    /* Implementação do Padrão Singleton */
+    public static RepositorioNotasDisciplinaArray getInstance() {
+        if(instance == null) {
+            instance = lerDoArquivo();
+        }
+        return instance;
+    }
+
+    private static RepositorioNotasDisciplinaArray lerDoArquivo(){
+        RepositorioNotasDisciplinaArray instanciaLocal = null;
+
+        File entrada = new File("notasDisciplinas.dat");
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try{
+            fis = new FileInputStream(entrada);
+            ois = new ObjectInputStream(fis);
+            Object o = ois.readObject();
+            instanciaLocal = (RepositorioNotasDisciplinaArray) o; // Cast necessário
+        } catch (Exception e) {
+        instanciaLocal = new RepositorioNotasDisciplinaArray(100); // Acionado pela primeira vez
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e){
+                    // do nothing ("error swallowing")
+                }
+            }
+        }
+        return instanciaLocal;
+    }
+
+    public void salvarArquivo() {
+        if (instance == null) {
+            return;
+        }
+        File saida = new File("notasDisciplinas.dat");
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(saida);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(instance);
+        } catch(Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    //do nothing ("error swallowing")
+                }
+            }
+        }
     }
 
     public void inserirNotasDisciplina(NotasDisciplina nota) {
@@ -67,7 +131,7 @@ public class RepositorioNotasDisciplinaArray {
     }
 
     /* Método que remove disciplina do repositório - Delete */
-    public void removerNotaDisciplina(NotasDisciplina nota) {
+    public void removerNotaDisciplina(NotasDisciplina nota) throws NotasDisciplinaNaoExisteException{
 
         if(nota  != null) {
             int i = procurarPosicao(nota);
@@ -76,19 +140,21 @@ public class RepositorioNotasDisciplinaArray {
                 this.notasDisciplinas[this.proximo - 1] = null;
                 this.proximo--;
             } else {
-                /* código para apresentar erro ao usuário */
-                //possibilidade de inserção de exceptions
+                throw new NotasDisciplinaNaoExisteException(nota.getDisciplina().getNome());
             }
         }
     }
 
     /* Método que retorna uma NotaDisciplina do repositório  - Read */
-    public NotasDisciplina procurarNotasDisciplina(NotasDisciplina nota) {
+    public NotasDisciplina procurarNotasDisciplina(NotasDisciplina nota) throws NotasDisciplinaNaoExisteException {
+
         NotasDisciplina notinha = null;
         if(nota != null) {
             int i = procurarPosicao(nota);
             if(i != this.proximo) {
                 notinha = this.notasDisciplinas[i];
+            } else {
+                throw new NotasDisciplinaNaoExisteException(nota.getDisciplina().getNome());
             }
         }
         return notinha;

@@ -1,8 +1,13 @@
 package Sistema_Gerencia_Estudantil.negocio.beans;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Turma { //Atributos
+public class Turma implements Serializable {
+    //Atributos
+    @Serial
+    private static final long serialVersionUID = 3503947409667933517L;
     private int ID;
     private String nome;
     private String IDaluno;

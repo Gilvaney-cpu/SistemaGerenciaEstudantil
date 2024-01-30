@@ -1,10 +1,15 @@
 package Sistema_Gerencia_Estudantil.negocio.beans;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Professor extends Usuario {
+public class Professor extends Usuario implements Serializable {
 
+    /* VERIFICAR O CODIGO NO FINAL DESTA CLASSE (psvm) para posterior exclusão */
+    @Serial
+    private static final long serialVersionUID = -8993350995089294146L;
     private ArrayList<Turma> turma;
     private boolean ativo;
     private ArrayList<Disciplina> disciplina;
@@ -57,5 +62,31 @@ public class Professor extends Usuario {
             }
         }
         return b;
+    }
+
+    public static void main(String[] args) {
+
+        /* TESTE DE MANIPULAÇÃO DE ARQUIVOS*/
+        File f = new File("meuArquivo.dat");
+
+        try {
+        FileInputStream fis = new FileInputStream(f);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+
+            List<Professor> listaProf = (List<Professor>) ois.readObject();
+
+            for (Professor p: listaProf) {
+                System.out.println(p.getNome());
+                System.out.println(p.getCPF());
+                System.out.println(p.getID());
+                System.out.println("**********");
+            }
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
     }
 }

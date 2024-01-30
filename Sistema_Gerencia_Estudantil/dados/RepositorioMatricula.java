@@ -44,8 +44,10 @@ public class RepositorioMatricula {
         ArrayList<Matricula> lista = new ArrayList<>();
         if (matricula != null && repositorioMatricula.contains(matricula)) {
             for (int i = 0; i < repositorioMatricula.size(); i++) {
-                if (repositorioMatricula.get(i).getNumero() == matricula.getNumero()) {
+                /*if (repositorioMatricula.get(i).getNumero() == matricula.getNumero()) {
                     repositorioMatricula.remove(repositorioMatricula.get(i)); // removeu a matrícula desejada
+                }*/ if (repositorioMatricula.get(i).getIdMatricula().equals(matricula.getIdMatricula())) {
+                    this.removerMatricula(matricula);
                 }
             }
             this.inserirMatricula(matricula); // reinseriu a matrícula

@@ -1,6 +1,8 @@
 package Sistema_Gerencia_Estudantil.negocio;
 
 import Sistema_Gerencia_Estudantil.dados.RepositorioPresencaArray;
+import Sistema_Gerencia_Estudantil.exceptions.PresencaJaExisteException;
+import Sistema_Gerencia_Estudantil.exceptions.PresencaNaoExisteException;
 import Sistema_Gerencia_Estudantil.negocio.beans.Presenca;
 
 
@@ -10,7 +12,8 @@ public class ControllerPresencaArray {
     private static ControllerPresencaArray instance;
 
     private ControllerPresencaArray() {
-        this.repositorioPresencaArray = new RepositorioPresencaArray(100);
+        //this.repositorioPresencaArray = new RepositorioPresencaArray(100);
+        this.repositorioPresencaArray = RepositorioPresencaArray.getInstance();
     }
 
     public static ControllerPresencaArray getInstance() {
@@ -21,13 +24,16 @@ public class ControllerPresencaArray {
     }
 
     /* Método que insere uma Presenca no repositório - Create */
-    public void inserir(Presenca p) {
+    public void inserir(Presenca p) throws PresencaJaExisteException {
         if(p != null && (!repositorioPresencaArray.existePresenca(p))) {
             repositorioPresencaArray.cadastrarPresenca(p);
+            repositorioPresencaArray.salvarArquivo();
         } else {
-            /* Oportunidade para lidar com o caso de Exceptions
-            * //throw new NaoExisteException();
-            * */
+            if(p == null) {
+                throw new IllegalArgumentException("Parâmetro passado é inválido!");
+            } else {
+                throw new PresencaJaExisteException(p.getIdAluno());
+            }
         }
     }
 
@@ -41,19 +47,18 @@ public class ControllerPresencaArray {
     }
 
     /* Retorna uma Presenca que esteja inserida no repositório - Read */
-    public Presenca procurar(Presenca p) {
+    public Presenca procurar(Presenca p) throws PresencaNaoExisteException {
         return repositorioPresencaArray.procurarPresenca(p);
     }
 
     /* Remove uma Presenca do repositório, se ela estiver nele - Delete*/
-    public void remover(Presenca p) {
+    public void remover(Presenca p) throws PresencaNaoExisteException {
         Presenca presenca = repositorioPresencaArray.procurarPresenca(p);
         if(p != null) {
             repositorioPresencaArray.removerPresenca(presenca);
+            repositorioPresencaArray.salvarArquivo();
         } else {
-            /* Possibilidade de levantamento de exceção
-            * throw new NaoExisteException();
-            * */
+            throw new PresencaNaoExisteException(p.getIdAluno());
         }
     }
 

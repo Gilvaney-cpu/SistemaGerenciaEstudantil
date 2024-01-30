@@ -2,6 +2,7 @@ package Sistema_Gerencia_Estudantil;
 
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfArray;
 import Sistema_Gerencia_Estudantil.dados.RepositorioProfessor;
+import Sistema_Gerencia_Estudantil.exceptions.*;
 import Sistema_Gerencia_Estudantil.negocio.*;
 import Sistema_Gerencia_Estudantil.negocio.beans.*;
 
@@ -13,7 +14,7 @@ import java.time.LocalTime;
  */
 public class MainTeste {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ProfessorJaExisteException, ProfessorNaoExisteException, DisciplinaJaExisteException, DisciplinaNaoExisteException, NotasDisciplinaJaExisteException, NotasDisciplinaNaoExisteException, PresencaJaExisteException, PresencaNaoExisteException {
 
         /* Teste de objetos Professor */
         Professor p1 = new Professor("Bárbara Lima", "07386499799", "password1","8555");
@@ -63,8 +64,8 @@ public class MainTeste {
         ControllerProfessorArray.getInstance().cadastrarProf(p3);
         ControllerProfessorArray.getInstance().cadastrarProf(p4);
         ControllerProfessorArray.getInstance().cadastrarProf(p5);
-        ControllerProfessorArray.getInstance().cadastrarProf(p6);
-        System.out.println(p3.equals(p6)); // teste método equals classe Professor
+       // ControllerProfessorArray.getInstance().cadastrarProf(p6);
+        System.out.println("P3.EQUALS(P6): " + p3.equals(p6)); // teste método equals classe Professor
         /* Teste Existe e Procurar */
         System.out.println(ControllerProfessorArray.getInstance().existe(p6));
         System.out.println(ControllerProfessorArray.getInstance().procurar(p6).getNome() + " " + ControllerProfessorArray.getInstance().procurar(p6).getCPF());
@@ -117,11 +118,26 @@ public class MainTeste {
 
         /* Teste métodos atribuirNota e atribuirPresenca */
         Matricula m1 = new Matricula("07653123","Português",2023,1);
-        Aluno aluno1 = new Aluno(LocalDate.of(2009,12,03), t1.getNome(),m1 );
-        ControllerProfessorArray.getInstance().atribuirNota(p1,t1,d1,aluno1,8.7);
+       Aluno aluno1 = new Aluno("Kiessen MayKoch", "19199344798","password7","a249iq", LocalDate.of(2009,12,03), t1.getNome(),m1 );
+       ControllerAluno.getInstance().inserir(aluno1);
+       ControllerProfessorArray.getInstance().atribuirNota(p1,t1,d1,aluno1,8.7);
         ControllerProfessorArray.getInstance().atribuirPresenca(p1,t1,d1,aluno1);
 
+        /* Trecho totalmente descartável */
+        System.out.println("\n\nteste m1 e aluno1");
+        System.out.println(ControllerProfessorArray.getInstance().procurar(p1));
+        System.out.println(ControllerAluno.getInstance().listar().size());
+        System.out.println(ControllerAluno.getInstance().listar());
 
+        /* Teste FACHADA */
+        System.out.println("\n\n****\tTeste Fachada\t****");
+        System.out.println(Fachada.getInstance().procurarProfessor(p1));
+        System.out.println(Fachada.getInstance().procurarProfessor(p2));
+       Fachada.getInstance().cadastrarProfessor(p4);
+        System.out.println(Fachada.getInstance().procurarProfessor(p4));
+        Fachada.getInstance().descadastrarProfessor(p4);
+        System.out.println(Fachada.getInstance().existeProfessor(p4));
+        System.out.println(Fachada.getInstance().listarAlunos());
 
 
 

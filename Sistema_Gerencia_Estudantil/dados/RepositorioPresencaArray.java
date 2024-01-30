@@ -1,19 +1,79 @@
 package Sistema_Gerencia_Estudantil.dados;
 
 
+import Sistema_Gerencia_Estudantil.exceptions.PresencaNaoExisteException;
 import Sistema_Gerencia_Estudantil.negocio.beans.Presenca;
 
-public class RepositorioPresencaArray {
+import java.io.*;
 
+public class RepositorioPresencaArray implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -1611790846644741688L;
     private Presenca[] presencas;
     private int proximo;
+    private static RepositorioPresencaArray instance;
 
     /* Método Construtor*/
-    public RepositorioPresencaArray(int size) {
+    private RepositorioPresencaArray(int size) {
         presencas = new Presenca[size];
         proximo = 0;
     }
 
+    /* Singleton Pattern */
+    public static RepositorioPresencaArray getInstance() {
+        if(instance == null) {
+            instance = lerDoArquivo();
+        }
+        return instance;
+    }
+
+    private static RepositorioPresencaArray lerDoArquivo() {
+        RepositorioPresencaArray instanciaLocal = null;
+        File entrada = new File("presencas.dat");
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            fis = new FileInputStream(entrada);
+            ois = new ObjectInputStream(fis);
+            Object o = ois.readObject();
+            instanciaLocal = (RepositorioPresencaArray) o;
+        } catch (Exception e) {
+            instanciaLocal = new RepositorioPresencaArray(100);
+        } finally {
+            if(ois != null) {
+                try {
+                    ois.close();
+                }catch(IOException e) {
+                    // error swallowing
+                }
+            }
+        }
+        return instanciaLocal;
+    }
+
+    public void salvarArquivo() {
+        if (instance == null) {
+            return;
+        }
+        File saida = new File("presencas.dat");
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(saida);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(instance);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) { // "error hiding" }
+                }
+            }
+        }
+    }
     public void cadastrarPresenca(Presenca p) {
         if (p != null) {
             presencas[proximo] = p;
@@ -60,7 +120,7 @@ public class RepositorioPresencaArray {
         return existe;
     }
 
-    public void removerPresenca(Presenca p) {
+    public void removerPresenca(Presenca p) throws PresencaNaoExisteException {
         if(p != null) {
             int i = this.procurarPosicao(p);
             if( i != proximo) {
@@ -68,19 +128,20 @@ public class RepositorioPresencaArray {
                 presencas[proximo - 1] = null;
                 proximo--;
             } else {
-                /* código para apresentar erro ao usuário */
-                //possibilidade de inserção de exceptions
+                throw new PresencaNaoExisteException(p.getIdAluno());
             }
         }
     }
 
     /* Método que retorna uma NotaDisciplina do repositório  - Read */
-    public Presenca procurarPresenca(Presenca p) {
+    public Presenca procurarPresenca(Presenca p) throws PresencaNaoExisteException {
         Presenca presenca = null;
         if(p != null) {
             int i = procurarPosicao(p);
             if( i != proximo) {
                 presenca = presencas[i];
+            } else {
+                throw new PresencaNaoExisteException(p.getIdAluno());
             }
         }
         return presenca;

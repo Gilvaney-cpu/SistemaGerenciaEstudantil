@@ -3,7 +3,7 @@ package Sistema_Gerencia_Estudantil.negocio.beans;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Aluno {
+public class Aluno extends Usuario{
 
     // Atributos
     private LocalDate dataNascimento;
@@ -14,7 +14,8 @@ public class Aluno {
     private ArrayList<Presenca> presencas;
 
     //Construtor
-    public Aluno(LocalDate dataNascimento, String turma, Matricula matriculaAluno) {
+    public Aluno(String nome, String cpf, String senha, String id,LocalDate dataNascimento, String turma, Matricula matriculaAluno) {
+        super(nome, cpf, senha, id);
         this.dataNascimento = dataNascimento;
         this.turma = turma;
         this.boletim = new ArrayList<>();
@@ -77,5 +78,12 @@ public class Aluno {
 
     public ArrayList<Presenca> getPresencas() {
         return presencas;
+    }
+
+    public String toString(){
+        /* Devolve o nome, id(super), nome da classe 'professor' do professor */
+        return String.format("Nome: %-10s | \nId: %10s | \nCargo: %-10s |\n",this.getNome()
+                ,super.getID()
+                , this.getClass().getSimpleName().toUpperCase());
     }
 }
