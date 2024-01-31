@@ -15,7 +15,7 @@ public class ControllerNotasDisciplinaArray {
 
     /* Método construtor */
     private ControllerNotasDisciplinaArray() {
-        //this.repositorioNotasDisciplinaArray = new RepositorioNotasDisciplinaArray(100);
+
         this.repositorioNotasDisciplinaArray = RepositorioNotasDisciplinaArray.getInstance();
     }
 

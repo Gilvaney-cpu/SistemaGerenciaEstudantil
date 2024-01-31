@@ -106,18 +106,6 @@ public class RepositorioProfArray implements Serializable {
         return i; // retorna a posição do cpf
    }
 
-   /* Método para verificar o índice do cpf que consta no repositório ProfArray (myVersion) */
-   public int procurarIndiceR(String cpf) {
-       boolean achou = false;
-       int indice = 0;
-       for(int i = 0; i < this.proxima; i++){
-           if(cpf.equals(this.professores[i].getCPF())) {
-               achou = true;
-               indice = i;
-           }
-       }
-       return indice;
-   }
 
    /* Verifica se o cpf passado como parâmetro existe nos objetos adicionados no repositório */
    public boolean existe(String cpf) {

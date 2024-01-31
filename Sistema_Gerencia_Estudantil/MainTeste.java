@@ -132,7 +132,7 @@ public class MainTeste {
         /* Teste FACHADA */
         System.out.println("\n\n****\tTeste Fachada\t****");
         System.out.println(Fachada.getInstance().procurarProfessor(p1));
-        System.out.println(Fachada.getInstance().procurarProfessor(p2));
+        System.out.println(Fachada.getInstance().procurarProfessor(p6));
        Fachada.getInstance().cadastrarProfessor(p4);
         System.out.println(Fachada.getInstance().procurarProfessor(p4));
         Fachada.getInstance().descadastrarProfessor(p4);

@@ -12,7 +12,7 @@ public class ControllerPresencaArray {
     private static ControllerPresencaArray instance;
 
     private ControllerPresencaArray() {
-        //this.repositorioPresencaArray = new RepositorioPresencaArray(100);
+
         this.repositorioPresencaArray = RepositorioPresencaArray.getInstance();
     }
 

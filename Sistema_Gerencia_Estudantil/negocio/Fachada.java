@@ -35,8 +35,7 @@ public class Fachada {
         return instance;
     }
 
-    /* Controller Professor
-    * revisar métodos ATRIBUIR NOTA E ATRIBUIR PRESENCA (EXCEPTIONS E teste)*/
+    /* Controller Professor */
 
     public void cadastrarProfessor (Professor p) throws ProfessorJaExisteException {
         controllerProfessorArray.cadastrarProf(p);

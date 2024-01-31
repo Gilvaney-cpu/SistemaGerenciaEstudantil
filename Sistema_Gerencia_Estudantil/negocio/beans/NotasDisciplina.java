@@ -58,5 +58,5 @@ public class NotasDisciplina implements Serializable {
 
     public double getValor() {
         return 0;
-    }
+    } // ???
 }

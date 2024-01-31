@@ -13,7 +13,7 @@ public class ControllerDisciplinaArray {
 
     /* Método construtor */
     private ControllerDisciplinaArray() {
-        //repositorioDisciplinaArray = new RepositorioDisciplinaArray(100);
+
         repositorioDisciplinaArray = RepositorioDisciplinaArray.getInstance();
     }
 
@@ -55,7 +55,6 @@ public class ControllerDisciplinaArray {
             this.repositorioDisciplinaArray.removerDisciplina(disc);
             this.repositorioDisciplinaArray.salvarArquivo();
         } else {
-            // oportunidade de exceptions aqui
             throw new DisciplinaNaoExisteException(disciplina.getNome());
         }
     }
