@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sistema_Gerencia_Estudantil.gui.TelaDiarioDeClasseController">
+   <children>
+      <BorderPane layoutX="-1.0" layoutY="1.0" prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <Label fx:id="labelWelcome" prefHeight="21.0" prefWidth="139.0" text="Diário de classe" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+         </top>
+         <left>
+            <AnchorPane prefHeight="365.0" prefWidth="143.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnVerTurmas" layoutX="17.0" layoutY="75.0" mnemonicParsing="false" onAction="#btnVerTurmasClicked" prefHeight="37.0" prefWidth="109.0" text="Ver Turmas">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnAtribuirNota" layoutX="18.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnAtribuirNotasClicked" prefHeight="40.0" prefWidth="110.0" text="Atribuir Nota">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnVoltar" layoutX="23.0" layoutY="287.0" mnemonicParsing="false" onAction="#btnVoltarClicked" prefHeight="30.0" prefWidth="94.0" text="Voltar">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnRealizarFrequencia" layoutX="18.0" layoutY="181.0" mnemonicParsing="false" onAction="#btnRealizarFrequenciaClicked" prefHeight="40.0" prefWidth="111.0" text="Realizar frequência">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="316.0" prefWidth="329.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="labelUserName" layoutX="143.0" layoutY="295.0" text="Label" />
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <AnchorPane prefHeight="63.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <right>
+            <AnchorPane prefHeight="316.0" prefWidth="144.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="imgViewIcon" fitHeight="113.0" fitWidth="111.0" layoutX="17.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../study-gray-pic.jpg" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
