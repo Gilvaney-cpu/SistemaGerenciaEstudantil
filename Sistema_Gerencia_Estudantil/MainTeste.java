@@ -1,10 +1,12 @@
 package Sistema_Gerencia_Estudantil;
 
-import Sistema_Gerencia_Estudantil.dados.RepositorioProfArray;
-import Sistema_Gerencia_Estudantil.dados.RepositorioProfessor;
+import Sistema_Gerencia_Estudantil.dados.RepositorioProfArquivo;
+//import Sistema_Gerencia_Estudantil.dados.RepositorioProfessor;
 import Sistema_Gerencia_Estudantil.exceptions.*;
 import Sistema_Gerencia_Estudantil.negocio.*;
 import Sistema_Gerencia_Estudantil.negocio.beans.*;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,9 +14,9 @@ import java.time.LocalTime;
 /**
  * Classe para Teste das funcionalidades do sistema
  */
-public class MainTeste {
+public class MainTeste extends Application {
 
-    public static void main(String[] args) throws ProfessorJaExisteException, ProfessorNaoExisteException, DisciplinaJaExisteException, DisciplinaNaoExisteException, NotasDisciplinaJaExisteException, NotasDisciplinaNaoExisteException, PresencaJaExisteException, PresencaNaoExisteException {
+	public static void main(String[] args) throws ProfessorJaExisteException, ProfessorNaoExisteException, DisciplinaJaExisteException, DisciplinaNaoExisteException, NotasDisciplinaJaExisteException, NotasDisciplinaNaoExisteException, PresencaJaExisteException, PresencaNaoExisteException {
 
         /* Teste de objetos Professor */
         Professor p1 = new Professor("Bárbara Lima", "07386499799", "password1","8555");
@@ -31,10 +33,10 @@ public class MainTeste {
         System.out.println(p5.getCPF().length() + " - " + p5.getNome() );
         System.out.println(p3.equals(p6));
 
-        /* Teste controllerProfessor */
+/*         Teste controllerProfessor 
         //ControllerProfessor.getInstance();  //Instanciando o controlador através do Sigleton Pattern
 
-        /* Teste Método Create */
+         Teste Método Create 
         ControllerProfessor.getInstance().inserir(p1); // Demonstração de sucesso acerca do Singleton Pattern
         ControllerProfessor.getInstance().inserir(p2);
         ControllerProfessor.getInstance().inserir(p3);
@@ -44,18 +46,18 @@ public class MainTeste {
 
         System.out.println();
        // ControllerProfessor.getInstance().listar();
-        /* Teste método Retrieve */
+         Teste método Retrieve 
        System.out.println(ControllerProfessor.getInstance().listar());
-       /* Teste método Delete */
+      // /* Teste método Delete 
        ControllerProfessor.getInstance().remover(p6);
        ControllerProfessor.getInstance().remover(p4);
         System.out.println();
         System.out.println(ControllerProfessor.getInstance().listar());
         System.out.println();
-        /* Método Update */
+      //   Método Update 
         ControllerProfessor.getInstance().atualizar(p1);
         System.out.println(ControllerProfessor.getInstance().listar());
-
+*/
 
         /* Seção de testes com Controller e Repositorio Baseados em Array */
         System.out.println("\n*** \t TESTE ProfARRAY \t ***");
@@ -131,7 +133,8 @@ public class MainTeste {
 
         /* Teste FACHADA */
         System.out.println("\n\n****\tTeste Fachada\t****");
-        System.out.println(Fachada.getInstance().procurarProfessor(p1));
+        System.out.println(Fachada.getInstance().procurarProfessor(p1).getCPF());
+        Fachada.getInstance().procurarProfessor(p1).getCPF().toString();
         System.out.println(Fachada.getInstance().procurarProfessor(p6));
        Fachada.getInstance().cadastrarProfessor(p4);
         System.out.println(Fachada.getInstance().procurarProfessor(p4));
@@ -139,7 +142,13 @@ public class MainTeste {
         System.out.println(Fachada.getInstance().existeProfessor(p4));
         System.out.println(Fachada.getInstance().listarAlunos());
 
-
+        MainApp.launch(args);
 
     }
+
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }

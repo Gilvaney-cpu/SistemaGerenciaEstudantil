@@ -46,15 +46,14 @@ public class TelaInicialController {
     @FXML
     private TextField txtField;
     
-    @FXML private TextField txtNome;	//nome do usuario logado [NOVO CODIGO]
+    @FXML private TextField txtNome;
     
     @FXML
     Alert alert;
     @FXML
     private Button btnDiarioDeClasse;
     
-     /* @FXML
-    private Label labelUserNome;*/
+
     
     @FXML
     public void btnLoginClicked(ActionEvent event) throws IOException, ProfessorNaoExisteException, ProfessorJaExisteException {
@@ -64,9 +63,7 @@ public class TelaInicialController {
     	senha = passwordField.getText().toString();
     	Professor p = new Professor("",cpf,senha,"");
     	boolean b = validacao(cpf,senha);
-    	
-    	
-    	//labelUserNome.setText(p.getNome());
+
     	if(cpf.isBlank() || senha.isBlank())
     	{
     		alert = new Alert(AlertType.WARNING);
@@ -79,11 +76,11 @@ public class TelaInicialController {
     	}
     	
     	if(b) {
-    		 Object obj = new Object();
-    		 obj = Fachada.getInstance().procurarProfessor(p);
+    		 //Object obj = new Object();
+    		// obj = Fachada.getInstance().procurarProfessor(p);
     		
     		System.out.println("Professor LOGADO - TELA PROFESSOR");
-    		String nome = p.getNome();
+    		//String nome = p.getNome();
     		stage = (Stage) btnLogin.getScene().getWindow();
         	FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("gui/telaOpcoesProfessor.fxml"));
             scene = new Scene(fxmlLoader.load());
@@ -94,12 +91,9 @@ public class TelaInicialController {
            // FachadaTela.getInstance().getTelaOpcoesProfessorController().initData((Professor)obj);
             stage.show();
              stage.setUserData(p.getNome());
-            
-            
             //scene.setUserData(p);
            // txtNome.setText(nome);
            // stage.setUserData(p);
-            
             
     	} else {
     		alert = new Alert(AlertType.WARNING);
@@ -123,27 +117,7 @@ public class TelaInicialController {
         	alert.setContentText("Insira novamente seu cpf e senha!");
         	alert.show();
         	//throw new ProfessorNaoExisteException(cpf);
-    	}
-    	*/
-    	/*
-    	/* Snippet pra trocar de tela 
-    	root = FXMLLoader.load(getClass().getResource("/gui/TelaOpcoesProfessor.fxml"));
-    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	scene = new Scene(root);
-    	stage.getIcons().add(new Image("sge-icon.png"));
-		stage.setTitle("Sistema de Gerencia Estudantil");
-    	stage.setScene(scene);
-    	stage.show();
-    	*/
-    	/* if { //checar se existe alguem no repositorio com nome e senha
-    	 * 		// checar se a senha está correta
-    	 * } else {
-    	 * alert = new Alert(AlertType.ERROR);
-    	alert.setTitle("Aviso");
-    	alert.setHeaderText("CONTA NÃO ENCONTRADA");
-    	alert.setContentText("Insira os dados novamente!");
-    	alert.show();
-    	 * }*/
+    	}*/
     			
     }
     
@@ -179,38 +153,6 @@ public void btnCadastroClicked(ActionEvent event) throws IOException {
     	 return certo;
     }
     
-    /*  setUserData(Object)*/
-    /*
-    private void sendData(ActionEvent event) {
-    	  // Step 1
-    	  Usuario u = new Usuario(p);
-    	  // Step 2
-    	  Node node = (Node) event.getSource();
-    	  // Step 3
-    	  Stage stage = (Stage) node.getScene().getWindow();
-    	  stage.close();
-    	  try {
-    	    // Step 4
-    	    Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("gui/telaInicial.fxml"));
-    	    // Step 5
-    	    stage.setUserData(u);
-    	    // Step 6
-    	    Scene scene = new Scene(root);
-    	    stage.setScene(scene);
-    	    // Step 7
-    	    stage.show();
-    	  } catch (IOException e) {
-    	    System.err.println(String.format("Error: %s", e.getMessage()));
-    	  }
-    	}*/
-    /*
-    public void inicializar() throws IOException {
 
-    	FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("gui/telaOpcoesProfessor.fxml"));
-        scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Sistema Gerencia Estudantil");
-        stage.getIcons().add(new Image("sge-icon.png"));
-        stage.setScene(scene);
-    }*/
 }
 

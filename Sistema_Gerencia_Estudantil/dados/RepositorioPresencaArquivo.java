@@ -6,30 +6,30 @@ import Sistema_Gerencia_Estudantil.negocio.beans.Presenca;
 
 import java.io.*;
 
-public class RepositorioPresencaArray implements Serializable {
+public class RepositorioPresencaArquivo implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -1611790846644741688L;
     private Presenca[] presencas;
     private int proximo;
-    private static RepositorioPresencaArray instance;
+    private static RepositorioPresencaArquivo instance;
 
     /* Método Construtor*/
-    private RepositorioPresencaArray(int size) {
+    private RepositorioPresencaArquivo(int size) {
         presencas = new Presenca[size];
         proximo = 0;
     }
 
     /* Singleton Pattern */
-    public static RepositorioPresencaArray getInstance() {
+    public static RepositorioPresencaArquivo getInstance() {
         if(instance == null) {
             instance = lerDoArquivo();
         }
         return instance;
     }
 
-    private static RepositorioPresencaArray lerDoArquivo() {
-        RepositorioPresencaArray instanciaLocal = null;
+    private static RepositorioPresencaArquivo lerDoArquivo() {
+        RepositorioPresencaArquivo instanciaLocal = null;
         File entrada = new File("presencas.dat");
         FileInputStream fis = null;
         ObjectInputStream ois = null;
@@ -37,9 +37,9 @@ public class RepositorioPresencaArray implements Serializable {
             fis = new FileInputStream(entrada);
             ois = new ObjectInputStream(fis);
             Object o = ois.readObject();
-            instanciaLocal = (RepositorioPresencaArray) o;
+            instanciaLocal = (RepositorioPresencaArquivo) o;
         } catch (Exception e) {
-            instanciaLocal = new RepositorioPresencaArray(100);
+            instanciaLocal = new RepositorioPresencaArquivo(100);
         } finally {
             if(ois != null) {
                 try {
@@ -81,6 +81,7 @@ public class RepositorioPresencaArray implements Serializable {
             if (presencas.length == proximo) {
                 duplicarArray();
             }
+            this.salvarArquivo();
         }
 
     }
@@ -127,6 +128,7 @@ public class RepositorioPresencaArray implements Serializable {
                 presencas[i] = presencas[proximo - 1];
                 presencas[proximo - 1] = null;
                 proximo--;
+                this.salvarArquivo();
             } else {
                 throw new PresencaNaoExisteException(p.getIdAluno());
             }

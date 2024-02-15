@@ -1,20 +1,20 @@
 package Sistema_Gerencia_Estudantil.negocio;
 
 
-import Sistema_Gerencia_Estudantil.dados.RepositorioDisciplinaArray;
+import Sistema_Gerencia_Estudantil.dados.RepositorioDisciplinaArquivo;
 import Sistema_Gerencia_Estudantil.exceptions.DisciplinaJaExisteException;
 import Sistema_Gerencia_Estudantil.exceptions.DisciplinaNaoExisteException;
 import Sistema_Gerencia_Estudantil.negocio.beans.Disciplina;
 
 public class ControllerDisciplinaArray {
 
-    private RepositorioDisciplinaArray repositorioDisciplinaArray;
+    private RepositorioDisciplinaArquivo repositorioDisciplinaArquivo;
     private static ControllerDisciplinaArray instance;
 
     /* Método construtor */
     private ControllerDisciplinaArray() {
 
-        repositorioDisciplinaArray = RepositorioDisciplinaArray.getInstance();
+        repositorioDisciplinaArquivo = RepositorioDisciplinaArquivo.getInstance();
     }
 
     /* Implementação Padrão Singleton */
@@ -30,9 +30,9 @@ public class ControllerDisciplinaArray {
     public void cadastrarDisciplina(Disciplina d) throws DisciplinaJaExisteException {
 
         if(d != null
-                && !this.repositorioDisciplinaArray.existe(d)) {
-            this.repositorioDisciplinaArray.inserirDisciplina(d);
-            this.repositorioDisciplinaArray.salvarArquivo();
+                && !this.repositorioDisciplinaArquivo.existe(d)) {
+            this.repositorioDisciplinaArquivo.inserirDisciplina(d);
+            //this.repositorioDisciplinaArray.salvarArquivo();
         } else {
             if (d == null) {
                 throw new IllegalArgumentException("Parâmetro passado é inválido!");
@@ -44,16 +44,16 @@ public class ControllerDisciplinaArray {
 
     /* Método que retorna uma disciplina passada como parâmetro, se ela constar no repositório */
     public Disciplina procurar(Disciplina d) throws DisciplinaNaoExisteException {
-        return this.repositorioDisciplinaArray.procurarDisciplina(d);
+        return this.repositorioDisciplinaArquivo.procurarDisciplina(d);
 
     }
 
     /* Método que remove do repositório a disciplina passada como parâmetro - Delete */
     public void remover (Disciplina disciplina) throws DisciplinaNaoExisteException {
-        Disciplina disc = this.repositorioDisciplinaArray.procurarDisciplina(disciplina);
+        Disciplina disc = this.repositorioDisciplinaArquivo.procurarDisciplina(disciplina);
         if(disc != null) {
-            this.repositorioDisciplinaArray.removerDisciplina(disc);
-            this.repositorioDisciplinaArray.salvarArquivo();
+            this.repositorioDisciplinaArquivo.removerDisciplina(disc);
+            //this.repositorioDisciplinaArray.salvarArquivo();
         } else {
             throw new DisciplinaNaoExisteException(disciplina.getNome());
         }
@@ -61,7 +61,7 @@ public class ControllerDisciplinaArray {
 
     /* Devolve um boolean (true) se o parâmetro passado existe no repositorio */
     public boolean existe(Disciplina d) {
-        return this.repositorioDisciplinaArray.existe(d);
+        return this.repositorioDisciplinaArquivo.existe(d);
     }
 
 }

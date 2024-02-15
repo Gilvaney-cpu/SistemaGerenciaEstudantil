@@ -7,16 +7,16 @@ import Sistema_Gerencia_Estudantil.negocio.beans.NotasDisciplina;
 
 import java.io.*;
 
-public class RepositorioNotasDisciplinaArray implements Serializable {
+public class RepositorioNotasDisciplinaArquivo implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -2082053928932491089L;
     private NotasDisciplina[] notasDisciplinas;
     private int proximo;
-    private static RepositorioNotasDisciplinaArray instance;
+    private static RepositorioNotasDisciplinaArquivo instance;
 
     /* Método Construtor */
-    private RepositorioNotasDisciplinaArray(int tamanho) {
+    private RepositorioNotasDisciplinaArquivo(int tamanho) {
 
         this.notasDisciplinas = new NotasDisciplina[tamanho];
         this.proximo = 0;
@@ -24,15 +24,15 @@ public class RepositorioNotasDisciplinaArray implements Serializable {
     }
 
     /* Implementação do Padrão Singleton */
-    public static RepositorioNotasDisciplinaArray getInstance() {
+    public static RepositorioNotasDisciplinaArquivo getInstance() {
         if(instance == null) {
             instance = lerDoArquivo();
         }
         return instance;
     }
 
-    private static RepositorioNotasDisciplinaArray lerDoArquivo(){
-        RepositorioNotasDisciplinaArray instanciaLocal = null;
+    private static RepositorioNotasDisciplinaArquivo lerDoArquivo(){
+        RepositorioNotasDisciplinaArquivo instanciaLocal = null;
 
         File entrada = new File("notasDisciplinas.dat");
         FileInputStream fis = null;
@@ -41,9 +41,9 @@ public class RepositorioNotasDisciplinaArray implements Serializable {
             fis = new FileInputStream(entrada);
             ois = new ObjectInputStream(fis);
             Object o = ois.readObject();
-            instanciaLocal = (RepositorioNotasDisciplinaArray) o; // Cast necessário
+            instanciaLocal = (RepositorioNotasDisciplinaArquivo) o; // Cast necessário
         } catch (Exception e) {
-        instanciaLocal = new RepositorioNotasDisciplinaArray(100); // Acionado pela primeira vez
+        instanciaLocal = new RepositorioNotasDisciplinaArquivo(100); // Acionado pela primeira vez
         } finally {
             if (ois != null) {
                 try {
@@ -89,6 +89,7 @@ public class RepositorioNotasDisciplinaArray implements Serializable {
             if(this.notasDisciplinas.length == this.proximo) {
                 this.duplicarArray();
             }
+            this.salvarArquivo();
         }
     }
 
@@ -139,6 +140,7 @@ public class RepositorioNotasDisciplinaArray implements Serializable {
                 this.notasDisciplinas[i] = this.notasDisciplinas[this.proximo - 1];
                 this.notasDisciplinas[this.proximo - 1] = null;
                 this.proximo--;
+                this.salvarArquivo();
             } else {
                 throw new NotasDisciplinaNaoExisteException(nota.getDisciplina().getNome());
             }

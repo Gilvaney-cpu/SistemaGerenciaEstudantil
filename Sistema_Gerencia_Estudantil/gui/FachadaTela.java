@@ -1,13 +1,11 @@
 package Sistema_Gerencia_Estudantil.gui;
 
 import javafx.scene.Scene;
-//import javafx.scene.image.Image;
+
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-//import Sistema_Gerencia_Estudantil.MainApp;
-//import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 import javafx.scene.layout.AnchorPane;
@@ -41,9 +39,7 @@ public class FachadaTela {
 		
 		return instance;
 	}
-	
-	/* "Construtor" que carrega todas as cenas (classes)
-	 * utilizadas no programa */
+
 	private void inicializar() {
 		        
         //telaInicial
@@ -120,7 +116,6 @@ public class FachadaTela {
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
-	
 	
 
 }

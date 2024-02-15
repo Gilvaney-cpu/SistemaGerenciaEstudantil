@@ -6,29 +6,29 @@ import Sistema_Gerencia_Estudantil.negocio.beans.Disciplina;
 
 import java.io.*;
 
-public class RepositorioDisciplinaArray implements Serializable {
+public class RepositorioDisciplinaArquivo implements Serializable {
     @Serial
     private static final long serialVersionUID = -3236304934842510866L;
     private Disciplina[] disciplinas;
     private int proxima;
-    private static RepositorioDisciplinaArray instance;
+    private static RepositorioDisciplinaArquivo instance;
 
     /* Método construtor */
-    private RepositorioDisciplinaArray(int tamanho) {
+    private RepositorioDisciplinaArquivo(int tamanho) {
         disciplinas = new Disciplina[tamanho];
         proxima = 0;
     }
 
     /* Implementação do Padrão Singleton */
-    public static RepositorioDisciplinaArray getInstance() {
+    public static RepositorioDisciplinaArquivo getInstance() {
         if(instance == null) {
             instance = lerDoArquivo();
         }
         return instance;
     }
 
-    private static RepositorioDisciplinaArray lerDoArquivo() {
-        RepositorioDisciplinaArray instanciaLocal = null;
+    private static RepositorioDisciplinaArquivo lerDoArquivo() {
+        RepositorioDisciplinaArquivo instanciaLocal = null;
 
         File entrada = new File("disciplinas.dat");
         FileInputStream fis = null;
@@ -37,10 +37,10 @@ public class RepositorioDisciplinaArray implements Serializable {
             fis = new FileInputStream(entrada);
             ois = new ObjectInputStream(fis);
             Object o = ois.readObject();
-            instanciaLocal = (RepositorioDisciplinaArray) o; // cast necessário para instanciar o repositorio
+            instanciaLocal = (RepositorioDisciplinaArquivo) o; // cast necessário para instanciar o repositorio
         }catch (Exception e) {
             // Captura a condição de não existir o arquivo
-            instanciaLocal = new RepositorioDisciplinaArray(100);
+            instanciaLocal = new RepositorioDisciplinaArquivo(100);
         } finally {
             //snippet que fecha o stream de dados
             if (ois != null) {
@@ -88,6 +88,7 @@ public class RepositorioDisciplinaArray implements Serializable {
             if (this.proxima == this.disciplinas.length) {
                 this.duplicaDisciplinaArray();
             }
+            this.salvarArquivo();
         }
     }
 
@@ -137,6 +138,7 @@ public class RepositorioDisciplinaArray implements Serializable {
             this.disciplinas[i] = this.disciplinas[this.proxima - 1];
             this.disciplinas[this.proxima - 1] = null;
             this.proxima--;
+            this.salvarArquivo();
             } else {
                 /* código para apresentar "erro" ao usuário */
                 throw new DisciplinaNaoExisteException(d.getNome());

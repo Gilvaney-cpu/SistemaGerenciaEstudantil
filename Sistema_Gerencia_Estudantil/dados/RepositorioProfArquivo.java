@@ -6,31 +6,31 @@ import Sistema_Gerencia_Estudantil.negocio.beans.Professor;
 import java.io.*;
 
 
-public class RepositorioProfArray implements Serializable {
+public class RepositorioProfArquivo implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 4701956056778571230L;
     private Professor[] professores;
     private int proxima;
 
-    private static RepositorioProfArray instance;
+    private static RepositorioProfArquivo instance;
 
     /* Método construtor */
-    private RepositorioProfArray(int tamanho) {
+    private RepositorioProfArquivo(int tamanho) {
         this.professores = new Professor[tamanho];
         this.proxima = 0;
     }
 
     /* Implementação do Padrão Singleton */
-    public static RepositorioProfArray getInstance() {
+    public static RepositorioProfArquivo getInstance() {
         if(instance == null) {
             instance = lerDoArquivo();
         }
         return instance;
     }
 
-    private static RepositorioProfArray lerDoArquivo() {
-        RepositorioProfArray instanciaLocal = null;
+    private static RepositorioProfArquivo lerDoArquivo() {
+        RepositorioProfArquivo instanciaLocal = null;
 
         File entrada = new File("professores.dat");
         FileInputStream fis = null;
@@ -39,10 +39,10 @@ public class RepositorioProfArray implements Serializable {
         fis = new FileInputStream(entrada);
         ois = new ObjectInputStream(fis);
         Object o = ois.readObject();
-        instanciaLocal = (RepositorioProfArray) o; // Cast necessário para instanciar o repositorio
+        instanciaLocal = (RepositorioProfArquivo) o; // Cast necessário para instanciar o repositorio
 
         }catch(Exception e) {
-            instanciaLocal = new RepositorioProfArray(100); // Para o caso de ser a 1ª vez
+            instanciaLocal = new RepositorioProfArquivo(100); // Para o caso de ser a 1ª vez
         }finally {
             if(ois != null) {
                 try{
@@ -88,6 +88,7 @@ public class RepositorioProfArray implements Serializable {
         if(this.proxima == this.professores.length) {
             this.duplicaProfArray();
         }
+        this.salvarArquivo();
     }
 
     /* Método que busca a posição do cpf de um professor que esteja no RepositorioProfArray */
@@ -135,6 +136,7 @@ public class RepositorioProfArray implements Serializable {
            this.professores[i] = this.professores[this.proxima - 1];
            this.professores[this.proxima - 1] = null;
            this.proxima--;
+           this.salvarArquivo();
        } else {
            /* código para apresentar erro ao usuário*/
            throw new ProfessorNaoExisteException(cpf);

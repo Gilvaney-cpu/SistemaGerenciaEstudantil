@@ -51,13 +51,6 @@ public class TelaOpcoesProfessorController {
     
   // private Professor p = (Professor) Object.getUserData();
    // String nome = (String) primaryStage.getUserData();
-    
-    
-    
-    //TODO FALTA MAPEAR OS MÉTODOS E ALTERAR O ARQUIVO FXML NO SCENEBUILDER
-    //TODO FALTA TBM VER OS MÉTODOS getUserData() [telaInicialController] e setUserData(Object) [telaOpcoesProfessorController]]
-    
-     
      @FXML
      public void btnLogoffClicked(ActionEvent event) throws IOException {
     	 primaryStage = (Stage) btnLogoff.getScene().getWindow();
@@ -67,12 +60,7 @@ public class TelaOpcoesProfessorController {
          primaryStage.getIcons().add(new Image("sge-icon.png"));
          primaryStage.setScene(scene);
          //primaryStage.getUserData();
-         
-         
-         
-         
-         
-         
+
      }
      @FXML
      public void btnDiarioDeClasseClicked(ActionEvent event) throws IOException {
@@ -80,8 +68,6 @@ public class TelaOpcoesProfessorController {
     	 //primaryStage.getUserData();
     	 //primaryStage = (Stage) btnDiarioDeClasse.getScene().getWindow();
 
-    	 //logoff
-    	 
           //btnDiarioDeClasse
           primaryStage = (Stage) btnDiarioDeClasse.getScene().getWindow();
     	 FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("gui/telaDiarioDeClasse.fxml"));//trocar o path
@@ -92,7 +78,6 @@ public class TelaOpcoesProfessorController {
          // Professor p = (Professor) primaryStage.getUserData();
           //labelUser.setText(p.getNome());
           primaryStage.show();
-          
           //primaryStage.getUserData();
      }
      @FXML
@@ -108,19 +93,5 @@ public class TelaOpcoesProfessorController {
            //primaryStage.show();
            //primaryStage.getUserData();
      }
-     /*
-     public void inicializar() throws IOException {
-    	 //primaryStage.getUserData();
-     	//FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("gui/telaOpcoesProfessor.fxml"));
-        // scene = new Scene(fxmlLoader.load());
-        // primaryStage.setTitle("Sistema Gerencia Estudantil");
-        // primaryStage.getIcons().add(new Image("sge-icon.png"));
-        // primaryStage.setScene(scene);
-        // primaryStage.show();
-    	 scene.getUserData();
-         labelUser.setText(((Professor) scene.getUserData()).getNome());
-     }*/
-     public void initData(Professor prof) {
-    	 labelUser.setText("");
-     }
+
 }

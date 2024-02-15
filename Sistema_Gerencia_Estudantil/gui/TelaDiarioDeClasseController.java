@@ -45,19 +45,19 @@ public class TelaDiarioDeClasseController {
     
     @FXML
     void btnAtribuirNotasClicked(ActionEvent event) {
-    	/*Apresentar essa informação no centro da tela (border pane)*/
+
     		Fachada.getInstance().atribuirNota(null, null, null, null, 0);
     }
 
     @FXML
     void btnRealizarFrequenciaClicked(ActionEvent event) {
-    	/*Apresentar essa informação no centro da tela (border pane)*/
+
     		Fachada.getInstance().atribuirNota(null, null, null, null, 0);
     }
 
     @FXML
     void btnVerTurmasClicked(ActionEvent event) throws Exception {
-    	/*Apresentar essa informação no centro da tela (border pane)*/	
+
     	Fachada.getInstance().procurarProfessor(null).getTurma().toArray().toString();
     }
 
